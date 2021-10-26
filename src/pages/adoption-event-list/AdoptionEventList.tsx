@@ -17,7 +17,7 @@ export const AdoptionEventList = () => {
   }
 
   return (
-    <article className={styles.page}>
+    <>
       <h2 className={styles.title}>Adoption Events</h2>
       <section className={styles.filters}>
         <label>Location:</label>
@@ -52,6 +52,6 @@ export const AdoptionEventList = () => {
           ))
         }
       </ul>
-    </article>
+    </>
   )
 }

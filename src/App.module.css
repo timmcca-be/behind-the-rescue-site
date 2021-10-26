@@ -1,3 +1,6 @@
 .main {
-  margin-top: 5rem;
+  margin: 6rem var(--content-margin) 0 var(--content-margin);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
