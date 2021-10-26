@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
-import { CrateReservation } from "../models/CrateReservation";
-import { CrateStack } from "../models/CrateStack";
+import { CrateReservationDto } from "../models/CrateReservationDto";
+import { CrateStackDto } from "../models/CrateStackDto";
 import { apiRequest } from "../utils/api";
 
 export type GetCrateReservationsResponse = {
-  crateReservations: CrateReservation[];
-  crateStacks: CrateStack[];
+  crateReservations: CrateReservationDto[];
+  crateStacks: CrateStackDto[];
 }
 
 export const useCrateReservations = (adoptionEventID: number, date?: string) => useQuery(

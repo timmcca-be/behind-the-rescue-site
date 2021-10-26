@@ -1,12 +1,12 @@
 import React from 'react';
-import { AdoptionEvent } from '../../../../models/AdoptionEvent';
+import { AdoptionEventDto } from '../../../../models/AdoptionEventDto';
 import { Species } from '../../../../models/Species';
 import styles from './AdoptionEventIcon.module.css';
 import catPaw from './cat_paw.svg';
 import dogPaw from './dog_paw.svg';
 
 export type AdoptionEventIconProps = {
-  adoptionEvent: AdoptionEvent;
+  adoptionEvent: AdoptionEventDto;
 }
 
 const getLocationColor = (location: string) => {

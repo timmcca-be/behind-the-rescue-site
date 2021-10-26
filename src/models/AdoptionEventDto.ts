@@ -1,7 +1,7 @@
 import { DayOfWeek } from "./DayOfWeek";
 import { Species } from "./Species";
 
-export type AdoptionEvent = {
+export type AdoptionEventDto = {
   id: number;
   name: string;
   location: string;

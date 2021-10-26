@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AdoptionEventListItem } from '../../components/adoption-event-list/adoption-event-list-item/AdoptionEventListItem';
 import { useAdoptionEvents } from '../../hooks/useAdoptionEvents';
-import { AdoptionEvent } from '../../models/AdoptionEvent';
+import { AdoptionEventDto } from '../../models/AdoptionEventDto';
 import styles from './AdoptionEventList.module.css';
 
 export const AdoptionEventList = () => {
@@ -9,7 +9,7 @@ export const AdoptionEventList = () => {
   const [filter, setFilter] = useState<string | null>(null);
   const locations = new Set<string>();
   data?.adoptionEvents.forEach((adoptionEvent) => locations.add(adoptionEvent.location));
-  let adoptionEvents: AdoptionEvent[] | undefined;
+  let adoptionEvents: AdoptionEventDto[] | undefined;
   if (filter) {
     adoptionEvents = data?.adoptionEvents.filter((adoptionEvent) => adoptionEvent.location === filter);
   } else {

@@ -1,9 +1,9 @@
-import { Animal } from "./Animal";
+import { AnimalDto } from "./AnimalDto";
 import { CrateSize } from "./CrateSize";
 
-export type CrateReservation = {
+export type CrateReservationDto = {
   id: number;
-  animals: Animal[];
+  animals: AnimalDto[];
   crateSize: CrateSize;
   fullyVaccinated: boolean;
 }

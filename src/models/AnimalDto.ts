@@ -1,6 +1,6 @@
 import { Species } from "./Species";
 
-export type Animal = {
+export type AnimalDto = {
   id: number;
   name: string;
   species: Species;

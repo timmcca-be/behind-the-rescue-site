@@ -1,6 +1,6 @@
 import { CrateSize } from "./CrateSize";
 
-export type Crate = {
+export type CrateDto = {
   size: CrateSize;
   isEmpty?: boolean;
 }

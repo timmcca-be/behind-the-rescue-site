@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AdoptionEvent } from '../../../models/AdoptionEvent';
+import { AdoptionEventDto } from '../../../models/AdoptionEventDto';
 import { FaCalendar, FaDotCircle } from 'react-icons/fa';
 import styles from './AdoptionEventListItem.module.css';
 import { AdoptionEventIcon } from './adoption-event-icon/AdoptionEventIcon';
 import { format, parseISO } from 'date-fns';
 
 export type AdoptionEventListItemProps = {
-  adoptionEvent: AdoptionEvent;
+  adoptionEvent: AdoptionEventDto;
 }
 
 export const AdoptionEventListItem = ({ adoptionEvent }: AdoptionEventListItemProps) => {

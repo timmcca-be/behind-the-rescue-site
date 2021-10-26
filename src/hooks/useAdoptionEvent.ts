@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
-import { AdoptionEvent } from "../models/AdoptionEvent";
+import { AdoptionEventDto } from "../models/AdoptionEventDto";
 import { apiRequest } from "../utils/api";
 
 export type GetAdoptionEventResponse = {
-  adoptionEvent: AdoptionEvent;
+  adoptionEvent: AdoptionEventDto;
 }
 
 export const useAdoptionEvent = (adoptionEventID: number) => useQuery(

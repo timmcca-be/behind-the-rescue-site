@@ -1,11 +1,10 @@
-import { format, parseISO } from 'date-fns';
 import React from 'react';
+import { format, parseISO } from 'date-fns';
 import { FaCalendar } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { CrateStacks } from '../../components/adoption-event/crate-stacks/CrateStacks';
 import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
 import { useCrateReservations } from '../../hooks/useCrateReservations';
-import { CrateSize } from '../../models/CrateSize';
 import styles from './AdoptionEvent.module.css';
 
 export type AdoptionEventParams = {
