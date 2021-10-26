@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# SAAP Behind the Rescue Site
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Setup
+
+Set up [the API](https://github.com/timmcca-be/behind-the-rescue-api) and run it before proceeding.
 
 ## Available Scripts
 
