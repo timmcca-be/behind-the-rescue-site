@@ -1,18 +1,11 @@
 import React from 'react';
 import { CrateSize } from '../../../models/CrateSize';
+import { CrateStack } from '../../../models/CrateStack';
 import styles from './CrateStacks.module.css';
-
-export type Crate = {
-  size: CrateSize;
-  isEmpty?: boolean;
-}
-
-export type CrateStack = Crate[];
 
 export type CrateStacksProps = {
   crateStacks: CrateStack[];
 }
-
 
 const crateSizeNames: Record<CrateSize, string> = {
   [CrateSize.Small]: 'S',

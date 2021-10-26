@@ -15,30 +15,27 @@ export type AdoptionEventParams = {
 export const AdoptionEvent = () => {
   const adoptionEventID = Number.parseInt(useParams<AdoptionEventParams>().adoptionEventID);
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
-  const crateReservations = useCrateReservations(adoptionEventID, adoptionEvent?.nextOccurrenceDate).data?.crateReservations;
+  const { data: crateData } = useCrateReservations(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
   const nextOccurrenceDate = adoptionEvent ? format(parseISO(adoptionEvent.nextOccurrenceDate), 'EEEE, MMM d') : '';
   
   return (
     <>
       <h1 className={styles.title}>{adoptionEvent?.name}</h1>
       <span><FaCalendar className={styles.icon} /> {nextOccurrenceDate}</span>
-      <CrateStacks crateStacks={[
-        [{ size: CrateSize.ExtraLarge }],
-        [{ size: CrateSize.Large }, { size: CrateSize.Large }],
-        [{ size: CrateSize.Large, isEmpty: true }, { size: CrateSize.Large }],
-        [{ size: CrateSize.Medium }, { size: CrateSize.Medium }],
-        [{ size: CrateSize.Medium }, { size: CrateSize.Small }],
-        [{ size: CrateSize.Medium }],
-        [{ size: CrateSize.Small }],
-        [{ size: CrateSize.Small }],
-      ]}/>
-      <ul>
-        {
-          crateReservations?.map((crateReservation) => (
-            <p key={crateReservation.id}>{crateReservation.crateSize}</p>
-          ))
-        }
-      </ul>
+      {
+        crateData && (
+          <>
+            <CrateStacks crateStacks={crateData.crateStacks} />
+            <ul>
+              {
+                crateData.crateReservations.map((crateReservation) => (
+                  <p key={crateReservation.id}>{crateReservation.crateSize}</p>
+                ))
+              }
+            </ul>
+          </>
+        )
+      }
     </>
   );
 }
