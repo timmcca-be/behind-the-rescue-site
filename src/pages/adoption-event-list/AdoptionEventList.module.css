@@ -1,0 +1,53 @@
+.page {
+  margin: 0 var(--content-margin);
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.adoptionEvents {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.filterButton, .selectedFilterButton, .clearFilterButton {
+  font-family: var(--content-font);
+  border: 1px solid var(--primary);
+  border-radius: 3px;
+  cursor: pointer;
+  min-width: 3.5rem;
+  font-size: 0.9rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.filterButton, .selectedFilterButton {
+  margin-left: 0.5rem;
+}
+
+.filterButton, .clearFilterButton {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.selectedFilterButton {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.clearFilterButton {
+  margin-left: 2rem;
+}

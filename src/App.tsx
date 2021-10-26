@@ -5,22 +5,27 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import { AdoptionEvent } from './pages/AdoptionEvent';
-import { AdoptionEventList } from './pages/AdoptionEventList';
+import { Header } from './components/common/header/Header';
+import { AdoptionEvent } from './pages/adoption-event/AdoptionEvent';
+import { AdoptionEventList } from './pages/adoption-event-list/AdoptionEventList';
+import styles from './App.module.css'
 
 const queryClient = new QueryClient();
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
     <Router>
-      <Switch>
-        <Route path="/adoption-events/:adoptionEventID">
-          <AdoptionEvent />
-        </Route>
-        <Route path="/">
-          <AdoptionEventList />
-        </Route>
-      </Switch>
+      <Header />
+      <main className={styles.main}>
+        <Switch>
+          <Route path="/adoption-events/:adoptionEventID">
+            <AdoptionEvent />
+          </Route>
+          <Route path="/">
+            <AdoptionEventList />
+          </Route>
+        </Switch>
+      </main>
     </Router>
   </QueryClientProvider>
 );

@@ -1,0 +1,44 @@
+.adoptionEvent {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  color: var(--primary);
+  display: flex;
+  margin: 0.8rem 0;
+  box-shadow: 0 4px 4px var(--shadow);
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.eventName {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0 0 0.5rem 0;
+}
+
+@media only screen and (min-width: 850px) {
+  .eventName {
+    font-size: 1.6rem;
+  }
+}
+
+.date, .date > span {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  flex-wrap: wrap;
+}
+
+.icon {
+  margin-right: 0.3rem;
+}
+
+.date > span {
+  margin-right: 0.8rem;
+}

@@ -1,0 +1,27 @@
+.header {
+  background-color: white;
+  position: fixed;
+  padding: 1rem var(--content-margin);
+  box-shadow: 0 2px 2px var(--shadow);
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.logo {
+  height: 3rem;
+}
+
+.title {
+  height: 2rem;
+  font-family: var(--header-font);
+  font-weight: bold;
+  margin: 0 1rem;
+}

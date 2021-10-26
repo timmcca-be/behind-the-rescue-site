@@ -1,13 +1,23 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --primary: #003c77;
+  --shadow: rgba(0, 0, 0, 0.25);
+  --background: #f0f0f0;
+  --content-margin: 1rem;
+  --header-font: Garamond, Georgia, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  --content-font: Lato, Geneva, Tahoma, sans-serif
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media only screen and (min-width: 850px) {
+  :root {
+    --content-margin: calc(50% - 400px)
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--content-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--primary);
 }

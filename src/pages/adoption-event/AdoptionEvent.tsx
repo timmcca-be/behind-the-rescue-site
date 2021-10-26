@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { useAdoptionEvent } from '../hooks/useAdoptionEvent';
-import { useCrateReservations } from '../hooks/useCrateReservations';
+import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
+import { useCrateReservations } from '../../hooks/useCrateReservations';
 
 export type AdoptionEventParams = {
   adoptionEventID: string;
