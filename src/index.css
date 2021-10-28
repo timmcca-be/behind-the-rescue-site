@@ -1,6 +1,9 @@
 :root {
   --primary: #003c77;
+  --primary-dark: #032649;
   --shadow: rgba(0, 0, 0, 0.25);
+  --confirm: #10bd58;
+  --invalid: #e40535;
   --background: #f0f0f0;
   --content-margin: 1rem;
   --header-font: Garamond, Georgia, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;

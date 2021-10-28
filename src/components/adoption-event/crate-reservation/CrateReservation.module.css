@@ -1,0 +1,21 @@
+.crateReservation {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  margin: 0.8rem 0;
+  box-shadow: 0 4px 4px var(--shadow);
+}
+
+.crateSize {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.icon {
+  margin-right: 0.3rem;
+}

@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.animals, .addAnimals {
+  width: 100%;
+}
+
+.addAnimals {
+  background-color: var(--primary);
+  border-radius: 3px;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: var(--content-font);
+  color: var(--background);
+  box-shadow: 0 2px 2px var(--shadow);
+  transition: background-color 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addAnimals:active {
+  background-color: var(--primary-dark);
+}
+
+.icon {
+  margin-right: 0.3rem;
+}
+
+.inputGroup, .addAnimals {
+  margin-bottom: 1rem;
+}
+
+.removeButton {
+  padding: 0.5rem;
+  font-family: var(--content-font);
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  transition: background-color 0.1s;
+}
+
+.removeButton:active {
+  background-color: var(--shadow);
+}
+
+.error {
+  color: var(--invalid);
+}
+
+.submit {
+  background-color: var(--primary);
+  border-radius: 3px;
+  border: none;
+  padding: 1rem;
+  font-family: var(--content-font);
+  color: var(--background);
+  text-decoration: none;
+  box-shadow: 0 2px 2px var(--shadow);
+  transition: background-color 0.1s;
+}
+
+.submit:active {
+  background-color: var(--primary-dark);
+}

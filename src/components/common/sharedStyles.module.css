@@ -1,0 +1,18 @@
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.animalListItem {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--shadow);
+  display: flex;
+  align-items: center;
+}
+
+.animalListItem:last-child {
+  border-bottom: none;
+}

@@ -6,32 +6,48 @@ import { CrateStacks } from '../../components/adoption-event/crate-stacks/CrateS
 import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
 import { useCrateReservations } from '../../hooks/useCrateReservations';
 import styles from './AdoptionEvent.module.css';
+import { CrateReservation } from '../../components/adoption-event/crate-reservation/CrateReservation';
+import { Link } from 'react-router-dom';
 
 export type AdoptionEventParams = {
   adoptionEventID: string;
 }
 
 export const AdoptionEvent = () => {
-  const adoptionEventID = Number.parseInt(useParams<AdoptionEventParams>().adoptionEventID);
+  const params = useParams<AdoptionEventParams>();
+  const adoptionEventID = Number.parseInt(params.adoptionEventID);
+
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
   const { data: crateData } = useCrateReservations(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+
   const nextOccurrenceDate = adoptionEvent ? format(parseISO(adoptionEvent.nextOccurrenceDate), 'EEEE, MMM d') : '';
-  
+
   return (
     <>
-      <h1 className={styles.title}>{adoptionEvent?.name}</h1>
-      <span><FaCalendar className={styles.icon} /> {nextOccurrenceDate}</span>
+      <div className={styles.header}>
+        <div>
+          <h1 className={styles.title}>{adoptionEvent?.name}</h1>
+          <span><FaCalendar className={styles.icon} /> {nextOccurrenceDate}</span>
+        </div>
+        <Link
+          to={`/adoption-events/${adoptionEventID}/reserve-crate`}
+          className={styles.reserveButton}
+        >
+          Reserve a crate
+        </Link>
+      </div>
       {
         crateData && (
           <>
             <CrateStacks crateStacks={crateData.crateStacks} />
-            <ul>
-              {
-                crateData.crateReservations.map((crateReservation) => (
-                  <p key={crateReservation.id}>{crateReservation.crateSize}</p>
-                ))
-              }
-            </ul>
+            {
+              crateData.crateReservations.map((crateReservation) => (
+                <CrateReservation
+                  key={crateReservation.id}
+                  crateReservation={crateReservation}
+                />
+              ))
+            }
           </>
         )
       }

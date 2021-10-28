@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AdoptionEventListItem } from '../../components/adoption-event-list/adoption-event-list-item/AdoptionEventListItem';
+import { AdoptionEventSummary } from '../../components/adoption-event-list/adoption-event-summary/AdoptionEventSummary';
 import { useAdoptionEvents } from '../../hooks/useAdoptionEvents';
 import { AdoptionEventDto } from '../../models/AdoptionEventDto';
 import styles from './AdoptionEventList.module.css';
@@ -24,6 +24,7 @@ export const AdoptionEventList = () => {
         {
           Array.from(locations).map((location) => (
             <button
+              key={location}
               className={location === filter ? styles.selectedFilterButton : styles.filterButton}
               onClick={() => setFilter(location === filter ? null : location)}
             >
@@ -45,7 +46,7 @@ export const AdoptionEventList = () => {
       <ul className={styles.adoptionEvents}>
         {
           adoptionEvents?.map((adoptionEvent) => (
-            <AdoptionEventListItem
+            <AdoptionEventSummary
               adoptionEvent={adoptionEvent}
               key={adoptionEvent.id}
             />

@@ -1,0 +1,18 @@
+.animals {
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+.check {
+  font-size: 3rem;
+  margin-right: 1rem;
+  color: var(--confirm)
+}
+
+.selected > * {
+  opacity: 0.5;
+}
+
+.clickable {
+  cursor: pointer;
+}

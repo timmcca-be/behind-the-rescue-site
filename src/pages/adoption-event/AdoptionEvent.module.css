@@ -3,3 +3,27 @@
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reserveButton {
+  background-color: var(--primary);
+  border-radius: 3px;
+  border: none;
+  padding: 1rem;
+  font-family: var(--content-font);
+  color: var(--background);
+  text-decoration: none;
+  box-shadow: 0 2px 2px var(--shadow);
+  transition: background-color 0.1s;
+}
+
+.reserveButton:active {
+  background-color: var(--primary-dark);
+}
