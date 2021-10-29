@@ -67,7 +67,9 @@ export const ReserveCrateForm = () => {
 
   return (
     <>
-      <h1>Reserve a crate</h1>
+      <h1 className={styles.title}>
+        Reserve a crate
+      </h1>
       <form
         className={styles.form}
         onSubmit={onSubmit}

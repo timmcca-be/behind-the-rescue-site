@@ -26,6 +26,7 @@ const modalStyles: Modal.Styles = {
     margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-end',
   },
 };
 
@@ -56,7 +57,7 @@ export const AnimalPicker = ({
       onRequestClose={close}
       style={modalStyles}
     >
-      <label>
+      <label className={styles.filter}>
         Filter animals:{' '}
         <input
           type="text"
@@ -95,6 +96,12 @@ export const AnimalPicker = ({
           )
         })}
       </ul>
+      <button
+        onClick={close}
+        className={styles.done}
+      >
+        Done
+      </button>
     </Modal>
   );
 }

@@ -16,12 +16,23 @@
 }
 
 .logo {
-  height: 3rem;
+  height: 1.5rem;
 }
 
 .title {
-  height: 2rem;
+  font-size: 1.5rem;
   font-family: var(--header-font);
   font-weight: bold;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (min-width: 850px) {
+  .logo {
+    height: 3rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin: 0 1rem;
+  }
 }
