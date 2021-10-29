@@ -8,8 +8,10 @@ export class ApiError extends Error {
   }
 }
 
-export const apiRequest = async <T>(input: RequestInfo, init?: RequestInit) => {
-  const response = await fetch(input, init);
+const API_URL = process.env.REACT_APP_API_URL;
+
+export const apiRequest = async <T>(path: string, init?: RequestInit) => {
+  const response = await fetch(`${API_URL}${path}`, init);
   if (response.ok) {
     return await response.json() as T;
   } else {

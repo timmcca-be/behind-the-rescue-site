@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Set up [the API](https://github.com/timmcca-be/behind-the-rescue-api) and run it before proceeding.
 
+Create the file `.env.local` and add the following content:
+
+    REACT_APP_API_URL=http://localhost:8080
+
+If your local server is hosted at a different address, point it to that URL.
+
 ## Available Scripts
 
 In the project directory, you can run:

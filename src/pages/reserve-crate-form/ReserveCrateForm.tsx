@@ -1,6 +1,6 @@
 import React, { FormEventHandler, useState } from 'react';
-import { FaMinusCircle, FaPlus } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
+import { FaMinusCircle, FaPlus, FaSpinner } from 'react-icons/fa';
+import { useHistory, useParams } from 'react-router-dom';
 import { AnimalPicker } from '../../components/reserve-crate/animal-picker/AnimalPicker';
 import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
 import { AnimalDto } from '../../models/AnimalDto';
@@ -24,6 +24,8 @@ type ValidationErrors = {
 export const ReserveCrateForm = () => {
   const params = useParams<ReserveCrateFormParams>();
   const adoptionEventID = Number.parseInt(params.adoptionEventID);
+
+  const history = useHistory();
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
   const reserveCrateMutation = useReserveCrate(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
@@ -49,16 +51,17 @@ export const ReserveCrateForm = () => {
     setValidationErrors({ crateSizeNotSet, noAnimalsSelected });
   }
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     if (crateSizeNotSet || noAnimalsSelected) {
       setValidationErrors({ crateSizeNotSet, noAnimalsSelected });
     } else {
-      reserveCrateMutation.mutate({
+      await reserveCrateMutation.mutateAsync({
         crateSize,
         animalIDs: animals.map((animal) => animal.id),
         fullyVaccinated,
       });
+      history.push(`/adoption-events/${adoptionEventID}`);
     }
   }
 
@@ -139,8 +142,13 @@ export const ReserveCrateForm = () => {
           />
           Fully vaccinated
         </label>
-        <button className={styles.submit}>
-          Reserve
+        <button
+          className={styles.submit}
+          disabled={reserveCrateMutation.isLoading}
+        >
+          {reserveCrateMutation.isLoading ? (
+            <FaSpinner title={'Reserving crate'} className={styles.spinner} />
+          ) : 'Reserve'}
         </button>
       </form>
     </>
