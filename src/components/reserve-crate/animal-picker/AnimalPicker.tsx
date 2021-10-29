@@ -79,6 +79,7 @@ export const AnimalPicker = ({
               onClick={onClick}
               className={[
                 sharedStyles.animalListItem,
+                sharedStyles.animalDataContainer,
                 styles.clickable,
                 isSelected ? styles.selected : '',
               ].join(' ')}

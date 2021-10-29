@@ -51,7 +51,10 @@ export const CrateReservation = ({ crateReservation }: CrateReservationProps) =>
         crateReservation.animals.map((animal) => (
           <li
             key={animal.id}
-            className={sharedStyles.animalListItem}
+            className={[
+              sharedStyles.animalListItem,
+              sharedStyles.animalDataContainer,
+            ].join(' ')}
           >
             <Link
               to={`/animals/${animal.id}`}
