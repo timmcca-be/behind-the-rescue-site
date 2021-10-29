@@ -1,4 +1,5 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { AnimalDto } from '../../../models/AnimalDto';
 import styles from './AnimalPhoto.module.css';
 
@@ -7,7 +8,7 @@ export type AnimalPhotoProps = {
 }
 
 export const AnimalPhoto = ({ animal }: AnimalPhotoProps) => (
-  <img
+  <LazyLoadImage
     src={animal.photoLink}
     alt={animal.name}
     className={styles.animalPhoto}
