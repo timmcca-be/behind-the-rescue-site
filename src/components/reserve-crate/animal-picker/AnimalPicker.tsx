@@ -3,18 +3,19 @@ import Modal from 'react-modal';
 import { useAvailableAnimals } from '../../../hooks/useAvailableAnimals';
 import { AnimalDto } from '../../../models/AnimalDto';
 import { Species } from '../../../models/Species';
-import { AnimalInfo } from '../../common/animal-info/AnimalInfo';
-import { AnimalPhoto } from '../../common/animal-photo/AnimalPhoto';
+import { AnimalInfo } from '../../common/animal/animal-info/AnimalInfo';
+import { AnimalPhoto } from '../../common/animal/animal-photo/AnimalPhoto';
 import styles from './AnimalPicker.module.css';
 import sharedStyles from '../../common/sharedStyles.module.css';
 import { FaCheckCircle } from 'react-icons/fa';
+import { SearchableAnimalList } from '../../common/animal/searchable-animal-list/SearchableAnimalList';
 
 export type AnimalPickerProps = {
   isOpen: boolean;
   species: Species;
   date: string;
-  animals: AnimalDto[];
-  setAnimals: Dispatch<SetStateAction<AnimalDto[]>>;
+  selectedAnimals: AnimalDto[];
+  setSelectedAnimals: Dispatch<SetStateAction<AnimalDto[]>>;
   close: () => void;
 }
 
@@ -34,8 +35,8 @@ export const AnimalPicker = ({
   isOpen,
   species,
   date,
-  animals,
-  setAnimals,
+  selectedAnimals,
+  setSelectedAnimals,
   close,
 }: AnimalPickerProps) => {
   const { data } = useAvailableAnimals(species, date);
@@ -43,13 +44,11 @@ export const AnimalPicker = ({
 
   useEffect(() => setFilter(''), [isOpen]);
 
-  const filteredAnimals = data?.animals
-    .filter((animal) => animal.name.toLowerCase().startsWith(filter.toLowerCase()));
+  const selectedAnimalIDs = new Set(selectedAnimals.map((animal) => animal.id));
   
-  const selectedAnimalIDs = new Set(animals.map((animal) => animal.id));
-  
-  const addAnimal = (animal: AnimalDto) => setAnimals((animals) => animals.concat([animal]));
-  const removeAnimal = (animalID: number) => setAnimals((animals) => animals.filter((animal) => animal.id !== animalID))
+  const addAnimal = (animal: AnimalDto) => setSelectedAnimals((animals) => animals.concat([animal]));
+  const removeAnimal = (animalID: number) => setSelectedAnimals((animals) =>
+    animals.filter((animal) => animal.id !== animalID))
 
   return (
     <Modal
@@ -57,19 +56,12 @@ export const AnimalPicker = ({
       onRequestClose={close}
       style={modalStyles}
     >
-      <label className={styles.filter}>
-        Filter animals:{' '}
-        <input
-          type="text"
-          value={filter}
-          onChange={(event) => setFilter(event.target.value)}
-        />
-      </label>
-      <ul className={[
-        sharedStyles.list,
-        styles.animals,
-      ].join(' ')}>
-        {filteredAnimals?.map((animal) => {
+      <SearchableAnimalList
+        animals={data?.animals}
+        filter={filter}
+        setFilter={setFilter}
+      >
+        {(animal) => {
           const isSelected = selectedAnimalIDs.has(animal.id);
           const onClick = isSelected ? () => removeAnimal(animal.id) : () => addAnimal(animal);
           
@@ -95,8 +87,8 @@ export const AnimalPicker = ({
               <AnimalInfo animal={animal} />
             </li>
           )
-        })}
-      </ul>
+        }}
+      </SearchableAnimalList>
       <button
         onClick={close}
         className={styles.done}

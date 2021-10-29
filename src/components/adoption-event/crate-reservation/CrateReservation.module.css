@@ -24,8 +24,3 @@
   padding: 0.5rem;
   border-radius: 3px;
 }
-
-.animalLink {
-  text-decoration: none;
-  color: var(--primary);
-}

@@ -27,6 +27,10 @@ const Animal = lazy(() =>
   import('./pages/animal/Animal')
     .then((module) => ({ default: module.Animal })));
 
+const AnimalList = lazy(() =>
+  import('./pages/animal-list/AnimalList')
+    .then((module) => ({ default: module.AnimalList })));
+
 export const App = () => (
   <QueryClientProvider client={queryClient}>
     <Router>
@@ -46,6 +50,11 @@ export const App = () => (
           <Route path="/animals/:animalID">
             <Suspense fallback={<Spinner />}>
               <Animal />
+            </Suspense>
+          </Route>
+          <Route path="/animals">
+            <Suspense fallback={<Spinner />}>
+              <AnimalList />
             </Suspense>
           </Route>
           <Route path="/">

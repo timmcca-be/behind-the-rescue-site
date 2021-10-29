@@ -42,7 +42,7 @@ export const Animal = () => {
 
   return (
     <>
-      <h1 className={styles.title}>{animal.name}</h1>
+      <h2>{animal.name}</h2>
       <section className={styles.summary}>
         <img
           alt={animal.name}

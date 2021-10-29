@@ -11,6 +11,6 @@ export const useAvailableAnimals = (
   species: Species,
   date: string,
 ) => useQuery(
-  'animals',
+  ['animals', species],
   () => apiRequest<GetAnimalsResponse>(`/animals/available/${date}/${species.toLowerCase()}s`),
 );

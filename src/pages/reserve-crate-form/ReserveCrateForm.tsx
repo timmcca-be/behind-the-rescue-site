@@ -7,8 +7,8 @@ import { AnimalDto } from '../../models/AnimalDto';
 import { CrateSize } from '../../models/CrateSize';
 import styles from './ReserveCrateForm.module.css';
 import sharedStyles from '../../components/common/sharedStyles.module.css';
-import { AnimalPhoto } from '../../components/common/animal-photo/AnimalPhoto';
-import { AnimalInfo } from '../../components/common/animal-info/AnimalInfo';
+import { AnimalPhoto } from '../../components/common/animal/animal-photo/AnimalPhoto';
+import { AnimalInfo } from '../../components/common/animal/animal-info/AnimalInfo';
 import { useReserveCrate } from '../../hooks/useReserveCrate';
 import { Spinner } from '../../components/common/spinner/Spinner';
 
@@ -68,9 +68,7 @@ export const ReserveCrateForm = () => {
 
   return (
     <>
-      <h1 className={styles.title}>
-        Reserve a crate
-      </h1>
+      <h2>Reserve a crate</h2>
       <form
         className={styles.form}
         onSubmit={onSubmit}
@@ -135,8 +133,8 @@ export const ReserveCrateForm = () => {
             isOpen={isAnimalPickerOpen}
             species={adoptionEvent.availableSpecies}
             date={adoptionEvent.nextOccurrenceDate}
-            animals={animals}
-            setAnimals={setAnimals}
+            selectedAnimals={animals}
+            setSelectedAnimals={setAnimals}
             close={() => setAnimalPickerOpen(false)}
           />
         )}

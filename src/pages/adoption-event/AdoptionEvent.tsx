@@ -27,7 +27,7 @@ export const AdoptionEvent = () => {
     <>
       <div className={styles.header}>
         <div>
-          <h1 className={styles.title}>{adoptionEvent?.name}</h1>
+          <h2>{adoptionEvent?.name}</h2>
           <span><FaCalendar className={sharedStyles.icon} /> {nextOccurrenceDate}</span>
         </div>
         <Link
