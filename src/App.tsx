@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import {
   BrowserRouter as Router,
@@ -6,13 +6,26 @@ import {
   Route,
 } from 'react-router-dom';
 import { Header } from './components/common/header/Header';
-import { AdoptionEvent } from './pages/adoption-event/AdoptionEvent';
-import { AdoptionEventList } from './pages/adoption-event-list/AdoptionEventList';
 import styles from './App.module.css'
-import { ReserveCrateForm } from './pages/reserve-crate-form/ReserveCrateForm';
-import { Animal } from './pages/animal/Animal';
+import { Spinner } from './components/common/spinner/Spinner';
 
 const queryClient = new QueryClient();
+
+const AdoptionEvent = lazy(() =>
+  import('./pages/adoption-event/AdoptionEvent')
+    .then((module) => ({ default: module.AdoptionEvent })));
+
+const AdoptionEventList = lazy(() =>
+  import('./pages/adoption-event-list/AdoptionEventList')
+    .then((module) => ({ default: module.AdoptionEventList })));
+
+const ReserveCrateForm = lazy(() =>
+  import('./pages/reserve-crate-form/ReserveCrateForm')
+    .then((module) => ({ default: module.ReserveCrateForm })));
+
+const Animal = lazy(() =>
+  import('./pages/animal/Animal')
+    .then((module) => ({ default: module.Animal })));
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -21,16 +34,24 @@ export const App = () => (
       <main className={styles.main}>
         <Switch>
           <Route path="/adoption-events/:adoptionEventID/reserve-crate">
-            <ReserveCrateForm />
+            <Suspense fallback={<Spinner />}>
+              <ReserveCrateForm />
+            </Suspense>
           </Route>
           <Route path="/adoption-events/:adoptionEventID">
-            <AdoptionEvent />
+            <Suspense fallback={<Spinner />}>
+              <AdoptionEvent />
+            </Suspense>
           </Route>
           <Route path="/animals/:animalID">
-            <Animal />
+            <Suspense fallback={<Spinner />}>
+              <Animal />
+            </Suspense>
           </Route>
           <Route path="/">
-            <AdoptionEventList />
+            <Suspense fallback={<Spinner />}>
+              <AdoptionEventList />
+            </Suspense>
           </Route>
         </Switch>
       </main>

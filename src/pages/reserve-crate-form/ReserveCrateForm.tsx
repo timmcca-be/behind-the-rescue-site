@@ -1,5 +1,5 @@
 import React, { FormEventHandler, useState } from 'react';
-import { FaMinusCircle, FaPlus, FaSpinner } from 'react-icons/fa';
+import { FaMinusCircle, FaPlus } from 'react-icons/fa';
 import { useHistory, useParams } from 'react-router-dom';
 import { AnimalPicker } from '../../components/reserve-crate/animal-picker/AnimalPicker';
 import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
@@ -10,6 +10,7 @@ import sharedStyles from '../../components/common/sharedStyles.module.css';
 import { AnimalPhoto } from '../../components/common/animal-photo/AnimalPhoto';
 import { AnimalInfo } from '../../components/common/animal-info/AnimalInfo';
 import { useReserveCrate } from '../../hooks/useReserveCrate';
+import { Spinner } from '../../components/common/spinner/Spinner';
 
 export type ReserveCrateFormParams = {
   adoptionEventID: string;
@@ -152,7 +153,7 @@ export const ReserveCrateForm = () => {
           disabled={reserveCrateMutation.isLoading}
         >
           {reserveCrateMutation.isLoading ? (
-            <FaSpinner title={'Reserving crate'} className={styles.spinner} />
+            <Spinner />
           ) : 'Reserve'}
         </button>
       </form>
