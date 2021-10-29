@@ -10,7 +10,7 @@ export type AnimalInfoProps = {
 
 export const AnimalInfo = ({ animal }: AnimalInfoProps) => (
   <article className={styles.animalInfo}>
-    <h3 className={styles.animalName}>{animal.name}</h3>
+    <h2 className={styles.animalName}>{animal.name}</h2>
     <span className={sharedStyles.iconData}>
       <FaUser
         title="Foster"
