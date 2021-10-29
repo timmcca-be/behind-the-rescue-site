@@ -38,6 +38,9 @@ export const AdoptionEventIcon = ({ adoptionEvent }: AdoptionEventIconProps) => 
       alt=""
       className={styles.paw}
     />
-    <p className={styles.location}>{adoptionEvent.location}</p>
+    <p className={[
+      styles.location,
+      adoptionEvent.location.length > 3 ? styles.longLocation : ''
+    ].join(' ')}>{adoptionEvent.location}</p>
   </section>
 )
