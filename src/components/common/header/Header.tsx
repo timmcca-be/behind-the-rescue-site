@@ -8,22 +8,22 @@ export const Header = () => (
     <Link to="/" className={styles.logoLink}>
       <img src={saapLogo} alt="SAAP" className={styles.logo} />
       <h1 className={styles.appName}>Behind the Rescue</h1>
-      <nav className={styles.navigation}>
-        <Link to="/">
-          <FaCalendar
-            title="Adoption Events"
-            className={styles.linkIcon}
-          />
-          <span className={styles.expanded}>Adoption Events</span>
-        </Link>
-        <Link to="/animals">
-          <FaDog
-            title="Animals"
-            className={styles.linkIcon}
-          />
-          <span className={styles.expanded}>Animals</span>
-        </Link>
-      </nav>
     </Link>
+    <nav className={styles.navigation}>
+      <Link to="/">
+        <FaCalendar
+          title="Adoption Events"
+          className={styles.linkIcon}
+        />
+        <span className={styles.expanded}>Adoption Events</span>
+      </Link>
+      <Link to="/animals">
+        <FaDog
+          title="Animals"
+          className={styles.linkIcon}
+        />
+        <span className={styles.expanded}>Animals</span>
+      </Link>
+    </nav>
   </header>
 );
