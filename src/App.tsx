@@ -10,6 +10,7 @@ import { AdoptionEvent } from './pages/adoption-event/AdoptionEvent';
 import { AdoptionEventList } from './pages/adoption-event-list/AdoptionEventList';
 import styles from './App.module.css'
 import { ReserveCrateForm } from './pages/reserve-crate-form/ReserveCrateForm';
+import { Animal } from './pages/animal/Animal';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,9 @@ export const App = () => (
           </Route>
           <Route path="/adoption-events/:adoptionEventID">
             <AdoptionEvent />
+          </Route>
+          <Route path="/animals/:animalID">
+            <Animal />
           </Route>
           <Route path="/">
             <AdoptionEventList />

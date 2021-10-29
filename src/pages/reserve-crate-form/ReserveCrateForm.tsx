@@ -100,7 +100,10 @@ export const ReserveCrateForm = () => {
           {animals.map((animal) => (
             <li
               key={animal.id}
-              className={sharedStyles.animalListItem}
+              className={[
+                sharedStyles.animalListItem,
+                sharedStyles.animalDataContainer,
+              ].join(' ')}
             >
               <AnimalPhoto animal={animal} />
               <AnimalInfo animal={animal} />

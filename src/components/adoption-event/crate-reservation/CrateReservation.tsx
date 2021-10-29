@@ -6,6 +6,7 @@ import styles from './CrateReservation.module.css';
 import sharedStyles from '../../common/sharedStyles.module.css';
 import { AnimalPhoto } from '../../common/animal-photo/AnimalPhoto';
 import { AnimalInfo } from '../../common/animal-info/AnimalInfo';
+import { Link } from 'react-router-dom';
 
 export type CrateReservationProps = {
   crateReservation: CrateReservationDto;
@@ -52,8 +53,16 @@ export const CrateReservation = ({ crateReservation }: CrateReservationProps) =>
             key={animal.id}
             className={sharedStyles.animalListItem}
           >
-            <AnimalPhoto animal={animal} />
-            <AnimalInfo animal={animal} />
+            <Link
+              to={`/animals/${animal.id}`}
+              className={[
+                sharedStyles.animalDataContainer,
+                styles.animalLink,
+              ].join(' ')}
+            >
+              <AnimalPhoto animal={animal} />
+              <AnimalInfo animal={animal} />
+            </Link>
           </li>
         ))
       }

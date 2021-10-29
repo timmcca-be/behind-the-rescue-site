@@ -1,0 +1,25 @@
+.title {
+  margin-top: 0;
+  font-weight: normal;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.photo {
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.iconData {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin: 0 0 1rem 0;
+}

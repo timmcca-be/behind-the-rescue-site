@@ -8,5 +8,5 @@ export type GetAdoptionEventsResponse = {
 
 export const useAdoptionEvents = () => useQuery(
   'adoption-events',
-  async () => apiRequest<GetAdoptionEventsResponse>('/adoption-events'),
+  () => apiRequest<GetAdoptionEventsResponse>('/adoption-events'),
 );
