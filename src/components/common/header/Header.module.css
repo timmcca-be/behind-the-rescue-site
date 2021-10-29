@@ -39,6 +39,8 @@
   color: var(--primary);
   padding: 0 0.5rem;
   transition: color 0.1s;
+  display: flex;
+  align-items: center;
 }
 
 .navigation > *:hover {
