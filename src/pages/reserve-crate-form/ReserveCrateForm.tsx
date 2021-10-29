@@ -111,7 +111,7 @@ export const ReserveCrateForm = () => {
               >
                 <FaMinusCircle
                   title="Remove"
-                  className={styles.icon}
+                  className={sharedStyles.icon}
                 />
                 Remove
               </button>
@@ -123,7 +123,7 @@ export const ReserveCrateForm = () => {
           onClick={() => setAnimalPickerOpen(true)}
           className={styles.addAnimals}
         >
-          <FaPlus className={styles.icon} />
+          <FaPlus className={sharedStyles.icon} />
           Add animals
         </button>
         { adoptionEvent && (

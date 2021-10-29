@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AdoptionEventDto } from '../../../models/AdoptionEventDto';
 import { FaCalendar, FaDotCircle } from 'react-icons/fa';
 import styles from './AdoptionEventSummary.module.css';
+import sharedStyles from '../../common/sharedStyles.module.css';
 import { AdoptionEventIcon } from './adoption-event-icon/AdoptionEventIcon';
 import { format, parseISO } from 'date-fns';
 
@@ -27,14 +28,14 @@ export const AdoptionEventSummary = ({ adoptionEvent }: AdoptionEventSummaryProp
             <span>
               <FaCalendar
                 title="Day of week"
-                className={styles.icon}
+                className={sharedStyles.icon}
               />
               {dayOfWeek}s
             </span>
             <span>
               <FaDotCircle
                 title="Next occurrence"
-                className={styles.icon}
+                className={sharedStyles.icon}
               />
               Upcoming on {nextOccurrenceDate}
             </span>

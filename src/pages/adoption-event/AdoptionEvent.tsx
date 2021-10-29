@@ -6,6 +6,7 @@ import { CrateStacks } from '../../components/adoption-event/crate-stacks/CrateS
 import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
 import { useCrateReservations } from '../../hooks/useCrateReservations';
 import styles from './AdoptionEvent.module.css';
+import sharedStyles from '../../components/common/sharedStyles.module.css';
 import { CrateReservation } from '../../components/adoption-event/crate-reservation/CrateReservation';
 import { Link } from 'react-router-dom';
 
@@ -27,7 +28,7 @@ export const AdoptionEvent = () => {
       <div className={styles.header}>
         <div>
           <h1 className={styles.title}>{adoptionEvent?.name}</h1>
-          <span><FaCalendar className={styles.icon} /> {nextOccurrenceDate}</span>
+          <span><FaCalendar className={sharedStyles.icon} /> {nextOccurrenceDate}</span>
         </div>
         <Link
           to={`/adoption-events/${adoptionEventID}/reserve-crate`}

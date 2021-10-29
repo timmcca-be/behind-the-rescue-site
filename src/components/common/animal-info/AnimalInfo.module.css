@@ -10,13 +10,3 @@
   font-weight: normal;
   font-size: 1.3rem;
 }
-
-.iconData {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-}
-
-.icon {
-  margin-right: 0.3rem;
-}

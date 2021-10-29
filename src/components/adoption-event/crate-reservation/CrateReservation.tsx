@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCube } from 'react-icons/fa';
+import { FaCube, FaExclamationTriangle } from 'react-icons/fa';
 import { CrateReservationDto } from '../../../models/CrateReservationDto';
 import { CrateSize } from '../../../models/CrateSize';
 import styles from './CrateReservation.module.css';
@@ -29,10 +29,22 @@ export const CrateReservation = ({ crateReservation }: CrateReservationProps) =>
     <span className={styles.crateSize}>
       <FaCube
         title="Crate size"
-        className={styles.icon}
+        className={sharedStyles.icon}
       />
       {formatCrateSize(crateReservation.crateSize)}
     </span>
+    {!crateReservation.fullyVaccinated && (
+      <span className={[
+        sharedStyles.iconData,
+        styles.warning,
+      ].join(' ')}>
+        <FaExclamationTriangle
+          title="Crate size"
+          className={sharedStyles.icon}
+        />
+        Not fully vaccinated
+      </span>
+    )}
     <ul className={sharedStyles.list}>
       {
         crateReservation.animals.map((animal) => (

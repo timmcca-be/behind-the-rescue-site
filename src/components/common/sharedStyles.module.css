@@ -4,6 +4,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .animalListItem {
@@ -15,4 +16,14 @@
 
 .animalListItem:last-child {
   border-bottom: none;
+}
+
+.iconData {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.icon {
+  margin-right: 0.3rem;
 }

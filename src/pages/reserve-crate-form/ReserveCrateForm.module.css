@@ -30,10 +30,6 @@
   background-color: var(--primary-dark);
 }
 
-.icon {
-  margin-right: 0.3rem;
-}
-
 .inputGroup, .addAnimals {
   margin-bottom: 1rem;
 }
