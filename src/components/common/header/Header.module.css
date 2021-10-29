@@ -22,7 +22,7 @@
 }
 
 .appName {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: var(--header-font);
   font-weight: bold;
   margin: 0 0.5rem;
@@ -56,6 +56,10 @@
 }
 
 @media only screen and (min-width: 500px) {
+  .appName {
+    font-size: 1.5rem;
+  }
+
   .navigation > * {
     padding: 0 1rem;
   }
