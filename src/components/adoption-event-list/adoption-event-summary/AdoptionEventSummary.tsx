@@ -16,11 +16,11 @@ export const AdoptionEventSummary = ({ adoptionEvent }: AdoptionEventSummaryProp
   const nextOccurrenceDate = format(parseISO(adoptionEvent.nextOccurrenceDate), 'MMM d');
 
   return (
-    <Link
-      to={`/adoption-events/${adoptionEvent.id}`}
-      className={styles.link}
-    >
-      <li className={styles.adoptionEvent}>
+    <li>
+      <Link
+        to={`/adoption-events/${adoptionEvent.id}`}
+        className={styles.adoptionEvent}
+      >
         <AdoptionEventIcon adoptionEvent={adoptionEvent} />
         <section>
           <h3 className={styles.eventName}>{adoptionEvent.name}</h3>
@@ -41,7 +41,7 @@ export const AdoptionEventSummary = ({ adoptionEvent }: AdoptionEventSummaryProp
             </span>
           </span>
         </section>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 }
