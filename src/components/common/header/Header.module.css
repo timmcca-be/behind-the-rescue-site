@@ -37,7 +37,7 @@
 .navigation > * {
   text-decoration: none;
   color: var(--primary);
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   transition: color 0.1s;
 }
 
@@ -55,7 +55,7 @@
 
 @media only screen and (min-width: 500px) {
   .navigation > * {
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
   }
 
   .expanded {
