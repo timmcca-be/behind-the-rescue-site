@@ -41,7 +41,9 @@ export const AnimalPicker = ({
   removeAnimal,
   close,
 }: AnimalPickerProps) => {
-  const { data } = useAvailableAnimals(species, date);
+  const { data } = useAvailableAnimals(species, date, {
+    enabled: isOpen,
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => setFilter(''), [isOpen]);

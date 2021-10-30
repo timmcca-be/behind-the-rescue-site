@@ -7,10 +7,16 @@ export type GetAnimalsResponse = {
   animals: AnimalDto[];
 }
 
+export type UseAvailableAnimalsOptions = {
+  enabled: boolean;
+}
+
 export const useAvailableAnimals = (
   species: Species,
   date: string,
+  options?: UseAvailableAnimalsOptions,
 ) => useQuery(
   ['animals', species],
   () => apiRequest<GetAnimalsResponse>(`/animals/available/${date}/${species.toLowerCase()}s`),
+  options,
 );
