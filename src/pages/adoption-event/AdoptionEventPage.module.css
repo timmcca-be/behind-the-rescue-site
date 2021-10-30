@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.sectionHeader {
+  margin: 2rem 0 0.5rem 0;
+}
+
 .reserveButton {
   background-color: var(--primary);
   border-radius: 3px;
@@ -20,4 +24,8 @@
 
 .reserveButton:active {
   background-color: var(--primary-dark);
+}
+
+.meetAndGreets {
+  margin-bottom: 2rem;
 }

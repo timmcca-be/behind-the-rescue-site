@@ -9,6 +9,8 @@ import styles from './AdoptionEventPage.module.css';
 import sharedStyles from '../../components/common/sharedStyles.module.css';
 import { CrateReservation } from '../../components/adoption-event/crate-reservation/CrateReservation';
 import { Link } from 'react-router-dom';
+import { useMeetAndGreets } from '../../hooks/api/useMeetAndGreets';
+import { AnimalLink } from '../../components/common/animal/animal-link/AnimalLink';
 
 export type AdoptionEventPageParams = {
   adoptionEventID: string;
@@ -20,6 +22,7 @@ export const AdoptionEventPage = () => {
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
   const { data: crateData } = useCrateReservations(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+  const meetAndGreets = useMeetAndGreets(adoptionEventID, adoptionEvent?.nextOccurrenceDate).data?.meetAndGreets;
 
   const nextOccurrenceDate = adoptionEvent ? format(parseISO(adoptionEvent.nextOccurrenceDate), 'EEEE, MMM d') : '';
 
@@ -39,19 +42,36 @@ export const AdoptionEventPage = () => {
       </div>
       {
         crateData && (
-          <>
-            <CrateStacks crateStacks={crateData.crateStacks} />
-            {
-              crateData.crateReservations.map((crateReservation) => (
-                <CrateReservation
-                  key={crateReservation.id}
-                  crateReservation={crateReservation}
-                />
-              ))
-            }
-          </>
+          <CrateStacks crateStacks={crateData.crateStacks} />
         )
       }
+      <h3 className={styles.sectionHeader}>
+        Crate Reservations
+      </h3>
+      {
+        crateData?.crateReservations.map((crateReservation) => (
+          <CrateReservation
+            key={crateReservation.id}
+            crateReservation={crateReservation}
+          />
+        ))
+      }
+      <h3 className={styles.sectionHeader}>
+        Meet and Greets
+      </h3>
+      <ul className={[
+        sharedStyles.list,
+        styles.meetAndGreets,
+      ].join(' ')}>
+        {
+          meetAndGreets?.map((meetAndGreet) => (
+            <AnimalLink
+              key={meetAndGreet.id}
+              animal={meetAndGreet.animal}
+            />
+          ))
+        }
+      </ul>
     </>
   );
 }
