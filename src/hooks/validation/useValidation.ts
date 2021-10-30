@@ -11,17 +11,18 @@ export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
     return initialErrors;
   });
 
-  let displayedErrorsDirty = false;
+  let areDisplayedErrorsDirty = false;
   const newDisplayedErrors: Errors<T> = {};
   for (const name of errorNames) {
     const previousValue = displayedErrors[name];
-    displayedErrors[name] = displayedErrors[name] && currentErrors[name];
+    const newValue = displayedErrors[name] && currentErrors[name];
+    displayedErrors[name] = newValue;
     if (previousValue !== displayedErrors[name]) {
-      displayedErrorsDirty = true;
+      areDisplayedErrorsDirty = true;
     }
   }
 
-  if (displayedErrorsDirty) {
+  if (areDisplayedErrorsDirty) {
     setDisplayedErrors(newDisplayedErrors);
   }
   
