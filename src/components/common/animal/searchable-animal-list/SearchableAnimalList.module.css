@@ -1,6 +1,7 @@
 .animals {
   overflow-y: auto;
   margin: 0.5rem 0 1rem 0;
+  flex-grow: 1;
 }
 
 .animals, .filter {
