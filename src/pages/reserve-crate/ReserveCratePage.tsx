@@ -63,7 +63,7 @@ export const ReserveCratePage = () => {
         <label className={styles.inputGroup}>
           Crate size:{' '}
           <CrateSizeSelect
-            value={crateSize}
+            crateSize={crateSize}
             setCrateSize={setCrateSize}
           />
         </label>
@@ -74,7 +74,7 @@ export const ReserveCratePage = () => {
           <AnimalSelect
             species={adoptionEvent.availableSpecies}
             date={adoptionEvent.nextOccurrenceDate}
-            value={animals}
+            selectedAnimals={animals}
             setSelectedAnimals={setAnimals}
           />
         )}

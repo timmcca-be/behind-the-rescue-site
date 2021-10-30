@@ -2,13 +2,13 @@ import React from 'react';
 import { CrateSize } from '../../../models/CrateSize';
 
 export type CrateSizeSelectProps = {
-  value: CrateSize | null;
+  crateSize: CrateSize | null;
   setCrateSize: (crateSize: CrateSize) => void;
 }
 
-export const CrateSizeSelect = ({ value, setCrateSize }: CrateSizeSelectProps) => (
+export const CrateSizeSelect = ({ crateSize, setCrateSize }: CrateSizeSelectProps) => (
   <select
-    value={value || ''}
+    value={crateSize || ''}
     onChange={(event) => setCrateSize(event.target.value as CrateSize)}
   >
     <option disabled value={''}> -- Select an option -- </option>
