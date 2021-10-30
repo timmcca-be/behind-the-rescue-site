@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { AdoptionEventDto } from "../models/AdoptionEventDto";
-import { apiRequest } from "../utils/api";
+import { AdoptionEventDto } from "../../models/AdoptionEventDto";
+import { apiRequest } from "../../utils/api";
 
 export type GetAdoptionEventsResponse = {
   adoptionEvents: AdoptionEventDto[];

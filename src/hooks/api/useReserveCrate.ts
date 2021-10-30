@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
-import { CrateSize } from '../models/CrateSize';
-import { apiRequest } from '../utils/api';
+import { CrateSize } from '../../models/CrateSize';
+import { apiRequest } from '../../utils/api';
 
 export type ReserveCrateRequest = {
   crateSize: CrateSize;

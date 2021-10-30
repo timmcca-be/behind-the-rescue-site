@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
-import { AnimalDto } from '../models/AnimalDto';
-import { Species } from '../models/Species';
-import { apiRequest } from '../utils/api';
+import { AnimalDto } from '../../models/AnimalDto';
+import { Species } from '../../models/Species';
+import { apiRequest } from '../../utils/api';
 
 export type GetAnimalsResponse = {
   animals: AnimalDto[];

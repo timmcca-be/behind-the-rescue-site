@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { AnimalLink } from '../../components/common/animal/animal-link/AnimalLink';
 import { SearchableAnimalList } from '../../components/common/animal/searchable-animal-list/SearchableAnimalList';
-import { useAllAnimals } from '../../hooks/useAllAnimals';
+import { useAllAnimals } from '../../hooks/api/useAllAnimals';
 
-export const AnimalList = () => {
+export const AnimalsPage = () => {
   const animals = useAllAnimals().data?.animals;
   const [filter, setFilter] = useState('');
 

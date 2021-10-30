@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { AdoptionEventSummary } from '../../components/adoption-event-list/adoption-event-summary/AdoptionEventSummary';
-import { useAdoptionEvents } from '../../hooks/useAdoptionEvents';
+import { useAdoptionEvents } from '../../hooks/api/useAdoptionEvents';
 import { AdoptionEventDto } from '../../models/AdoptionEventDto';
-import styles from './AdoptionEventList.module.css';
+import styles from './AdoptionEventsPage.module.css';
 
-export const AdoptionEventList = () => {
+export const AdoptionEventsPage = () => {
   const { data } = useAdoptionEvents();
   const [filter, setFilter] = useState<string | null>(null);
   const locations = new Set<string>();

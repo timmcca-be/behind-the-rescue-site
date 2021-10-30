@@ -11,25 +11,25 @@ import { Spinner } from './components/common/spinner/Spinner';
 
 const queryClient = new QueryClient();
 
-const AdoptionEvent = lazy(() =>
-  import('./pages/adoption-event/AdoptionEvent')
-    .then((module) => ({ default: module.AdoptionEvent })));
+const AdoptionEventPage = lazy(() =>
+  import('./pages/adoption-event/AdoptionEventPage')
+    .then((module) => ({ default: module.AdoptionEventPage })));
 
-const AdoptionEventList = lazy(() =>
-  import('./pages/adoption-event-list/AdoptionEventList')
-    .then((module) => ({ default: module.AdoptionEventList })));
+const AdoptionEventsPage = lazy(() =>
+  import('./pages/adoption-events/AdoptionEventsPage')
+    .then((module) => ({ default: module.AdoptionEventsPage })));
 
-const ReserveCrateForm = lazy(() =>
-  import('./pages/reserve-crate-form/ReserveCrateForm')
-    .then((module) => ({ default: module.ReserveCrateForm })));
+const ReserveCratePage = lazy(() =>
+  import('./pages/reserve-crate/ReserveCratePage')
+    .then((module) => ({ default: module.ReserveCratePage })));
 
-const Animal = lazy(() =>
-  import('./pages/animal/Animal')
-    .then((module) => ({ default: module.Animal })));
+const AnimalPage = lazy(() =>
+  import('./pages/animal/AnimalPage')
+    .then((module) => ({ default: module.AnimalPage })));
 
-const AnimalList = lazy(() =>
-  import('./pages/animal-list/AnimalList')
-    .then((module) => ({ default: module.AnimalList })));
+const AnimalsPage = lazy(() =>
+  import('./pages/animals/AnimalsPage')
+    .then((module) => ({ default: module.AnimalsPage })));
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -39,27 +39,27 @@ export const App = () => (
         <Switch>
           <Route path="/adoption-events/:adoptionEventID/reserve-crate">
             <Suspense fallback={<Spinner />}>
-              <ReserveCrateForm />
+              <ReserveCratePage />
             </Suspense>
           </Route>
           <Route path="/adoption-events/:adoptionEventID">
             <Suspense fallback={<Spinner />}>
-              <AdoptionEvent />
+              <AdoptionEventPage />
             </Suspense>
           </Route>
           <Route path="/animals/:animalID">
             <Suspense fallback={<Spinner />}>
-              <Animal />
+              <AnimalPage />
             </Suspense>
           </Route>
           <Route path="/animals">
             <Suspense fallback={<Spinner />}>
-              <AnimalList />
+              <AnimalsPage />
             </Suspense>
           </Route>
           <Route path="/">
             <Suspense fallback={<Spinner />}>
-              <AdoptionEventList />
+              <AdoptionEventsPage />
             </Suspense>
           </Route>
         </Switch>

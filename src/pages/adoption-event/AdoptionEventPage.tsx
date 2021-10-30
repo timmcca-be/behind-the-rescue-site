@@ -3,19 +3,19 @@ import { format, parseISO } from 'date-fns';
 import { FaCalendar } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { CrateStacks } from '../../components/adoption-event/crate-stacks/CrateStacks';
-import { useAdoptionEvent } from '../../hooks/useAdoptionEvent';
-import { useCrateReservations } from '../../hooks/useCrateReservations';
-import styles from './AdoptionEvent.module.css';
+import { useAdoptionEvent } from '../../hooks/api/useAdoptionEvent';
+import { useCrateReservations } from '../../hooks/api/useCrateReservations';
+import styles from './AdoptionEventPage.module.css';
 import sharedStyles from '../../components/common/sharedStyles.module.css';
 import { CrateReservation } from '../../components/adoption-event/crate-reservation/CrateReservation';
 import { Link } from 'react-router-dom';
 
-export type AdoptionEventParams = {
+export type AdoptionEventPageParams = {
   adoptionEventID: string;
 }
 
-export const AdoptionEvent = () => {
-  const params = useParams<AdoptionEventParams>();
+export const AdoptionEventPage = () => {
+  const params = useParams<AdoptionEventPageParams>();
   const adoptionEventID = Number.parseInt(params.adoptionEventID);
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;

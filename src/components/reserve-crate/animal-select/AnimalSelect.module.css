@@ -1,0 +1,25 @@
+.animals, .addAnimals {
+  width: 100%;
+}
+
+.addAnimals {
+  background-color: var(--primary);
+  border-radius: 3px;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: var(--content-font);
+  color: var(--background);
+  box-shadow: 0 2px 2px var(--shadow);
+  transition: background-color 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addAnimals:active {
+  background-color: var(--primary-dark);
+}
+
+.addAnimals {
+  margin-bottom: 1rem;
+}

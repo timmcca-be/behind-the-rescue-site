@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { useAvailableAnimals } from '../../../hooks/useAvailableAnimals';
+import { useAvailableAnimals } from '../../../hooks/api/useAvailableAnimals';
 import { AnimalDto } from '../../../models/AnimalDto';
 import { Species } from '../../../models/Species';
 import { AnimalInfo } from '../../common/animal/animal-info/AnimalInfo';
@@ -15,7 +15,8 @@ export type AnimalPickerProps = {
   species: Species;
   date: string;
   selectedAnimals: AnimalDto[];
-  setSelectedAnimals: Dispatch<SetStateAction<AnimalDto[]>>;
+  addAnimal: (animal: AnimalDto) => void;
+  removeAnimal: (animalID: number) => void;
   close: () => void;
 }
 
@@ -36,7 +37,8 @@ export const AnimalPicker = ({
   species,
   date,
   selectedAnimals,
-  setSelectedAnimals,
+  addAnimal,
+  removeAnimal,
   close,
 }: AnimalPickerProps) => {
   const { data } = useAvailableAnimals(species, date);
@@ -45,10 +47,6 @@ export const AnimalPicker = ({
   useEffect(() => setFilter(''), [isOpen]);
 
   const selectedAnimalIDs = new Set(selectedAnimals.map((animal) => animal.id));
-  
-  const addAnimal = (animal: AnimalDto) => setSelectedAnimals((animals) => animals.concat([animal]));
-  const removeAnimal = (animalID: number) => setSelectedAnimals((animals) =>
-    animals.filter((animal) => animal.id !== animalID))
 
   return (
     <Modal

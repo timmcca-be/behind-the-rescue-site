@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { AnimalDetailsDto } from "../models/AnimalDetailsDto";
-import { apiRequest } from "../utils/api";
+import { AnimalDetailsDto } from "../../models/AnimalDetailsDto";
+import { apiRequest } from "../../utils/api";
 
 export type GetAnimalDetailsResponse = {
   animal: AnimalDetailsDto;

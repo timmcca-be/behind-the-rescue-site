@@ -1,13 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { useAnimalDetails } from '../../hooks/useAnimalDetails';
+import { useAnimalDetails } from '../../hooks/api/useAnimalDetails';
 import { FaBirthdayCake, FaCat, FaDna, FaDog, FaUser } from 'react-icons/fa';
 import { Species } from '../../models/Species';
 import { Sex } from '../../models/Sex';
-import styles from './Animal.module.css';
+import styles from './AnimalPage.module.css';
 import sharedStyles from '../../components/common/sharedStyles.module.css';
 
-export type AnimalParams = {
+export type AnimalPageParams = {
   animalID: string;
 }
 
@@ -22,8 +22,8 @@ const decodeHtmlEntities = (input: string) =>
       return doc.documentElement.textContent;
     });
 
-export const Animal = () => {
-  const params = useParams<AnimalParams>();
+export const AnimalPage = () => {
+  const params = useParams<AnimalPageParams>();
   const animalID = Number.parseInt(params.animalID);
 
   const animal = useAnimalDetails(animalID).data?.animal;

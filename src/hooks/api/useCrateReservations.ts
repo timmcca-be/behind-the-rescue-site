@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
-import { CrateReservationDto } from "../models/CrateReservationDto";
-import { CrateStackDto } from "../models/CrateStackDto";
-import { apiRequest } from "../utils/api";
+import { CrateReservationDto } from "../../models/CrateReservationDto";
+import { CrateStackDto } from "../../models/CrateStackDto";
+import { apiRequest } from "../../utils/api";
 
 export type GetCrateReservationsResponse = {
   crateReservations: CrateReservationDto[];

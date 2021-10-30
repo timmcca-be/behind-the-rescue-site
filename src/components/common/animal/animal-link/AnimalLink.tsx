@@ -11,10 +11,7 @@ export type AnimalLinkProps = {
 }
 
 export const AnimalLink = ({ animal }: AnimalLinkProps) => (
-  <li
-    key={animal.id}
-    className={sharedStyles.animalListItem}
-  >
+  <li className={sharedStyles.animalListItem}>
     <Link
       to={`/animals/${animal.id}`}
       className={[

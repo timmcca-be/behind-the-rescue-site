@@ -1,0 +1,15 @@
+.removeButton {
+  padding: 0.5rem;
+  font-family: var(--content-font);
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  transition: background-color 0.1s;
+}
+
+.removeButton:active {
+  background-color: var(--shadow);
+}
