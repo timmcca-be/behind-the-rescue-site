@@ -9,25 +9,20 @@ import styles from './RemovableAnimal.module.css';
 export type RemovableAnimalProps = {
   animal: AnimalDto;
   remove: () => void;
-}
+};
 
 export const RemovableAnimal = ({ animal, remove }: RemovableAnimalProps) => (
-  <li className={[
-    sharedStyles.animalListItem,
-    sharedStyles.animalDataContainer,
-  ].join(' ')}>
+  <li
+    className={[
+      sharedStyles.animalListItem,
+      sharedStyles.animalDataContainer,
+    ].join(' ')}
+  >
     <AnimalPhoto animal={animal} />
     <AnimalInfo animal={animal} />
-    <button
-      type="button"
-      onClick={remove}
-      className={styles.removeButton}
-    >
-      <FaMinusCircle
-        title="Remove"
-        className={sharedStyles.icon}
-      />
+    <button type="button" onClick={remove} className={styles.removeButton}>
+      <FaMinusCircle title="Remove" className={sharedStyles.icon} />
       Remove
     </button>
   </li>
-)
+);

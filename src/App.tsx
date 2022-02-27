@@ -1,12 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Header } from './components/common/header/Header';
-import styles from './App.module.css'
+import styles from './App.module.css';
 import { Spinner } from './components/common/spinner/Spinner';
 import { Species } from './models/Species';
 import { AdoptionEventPageTab } from './pages/adoption-event/AdoptionEventPage';
@@ -14,28 +10,40 @@ import { AdoptionEventPageTab } from './pages/adoption-event/AdoptionEventPage';
 const queryClient = new QueryClient();
 
 const AdoptionEventPage = lazy(() =>
-  import('./pages/adoption-event/AdoptionEventPage')
-    .then((module) => ({ default: module.AdoptionEventPage })));
+  import('./pages/adoption-event/AdoptionEventPage').then((module) => ({
+    default: module.AdoptionEventPage,
+  })),
+);
 
 const AdoptionEventsPage = lazy(() =>
-  import('./pages/adoption-events/AdoptionEventsPage')
-    .then((module) => ({ default: module.AdoptionEventsPage })));
+  import('./pages/adoption-events/AdoptionEventsPage').then((module) => ({
+    default: module.AdoptionEventsPage,
+  })),
+);
 
 const ReserveCratePage = lazy(() =>
-  import('./pages/reserve-crate/ReserveCratePage')
-    .then((module) => ({ default: module.ReserveCratePage })));
+  import('./pages/reserve-crate/ReserveCratePage').then((module) => ({
+    default: module.ReserveCratePage,
+  })),
+);
 
 const ScheduleMeetAndGreetPage = lazy(() =>
-  import('./pages/schedule-meet-and-greet/ScheduleMeetAndGreetPage')
-    .then((module) => ({ default: module.ScheduleMeetAndGreetPage })));
+  import('./pages/schedule-meet-and-greet/ScheduleMeetAndGreetPage').then(
+    (module) => ({ default: module.ScheduleMeetAndGreetPage }),
+  ),
+);
 
 const AnimalPage = lazy(() =>
-  import('./pages/animal/AnimalPage')
-    .then((module) => ({ default: module.AnimalPage })));
+  import('./pages/animal/AnimalPage').then((module) => ({
+    default: module.AnimalPage,
+  })),
+);
 
 const AnimalsPage = lazy(() =>
-  import('./pages/animals/AnimalsPage')
-    .then((module) => ({ default: module.AnimalsPage })));
+  import('./pages/animals/AnimalsPage').then((module) => ({
+    default: module.AnimalsPage,
+  })),
+);
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>

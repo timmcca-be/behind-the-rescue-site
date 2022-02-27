@@ -8,13 +8,14 @@
   --warning: #b5570b;
   --background: #f0f0f0;
   --content-margin: 1rem;
-  --header-font: Garamond, Georgia, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-  --content-font: Lato, Geneva, Tahoma, sans-serif
+  --header-font: Garamond, Georgia, Baskerville, 'Baskerville Old Face',
+    'Hoefler Text', 'Times New Roman', serif;
+  --content-font: Lato, Geneva, Tahoma, sans-serif;
 }
 
 @media only screen and (min-width: 850px) {
   :root {
-    --content-margin: calc(50% - 400px)
+    --content-margin: calc(50% - 400px);
   }
 }
 

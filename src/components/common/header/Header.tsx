@@ -1,5 +1,5 @@
 import saapLogo from './saap_logo.svg';
-import styles from './Header.module.css'
+import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { FaCalendar, FaDog } from 'react-icons/fa';
 
@@ -11,17 +11,11 @@ export const Header = () => (
     </Link>
     <nav className={styles.navigation}>
       <Link to="/">
-        <FaCalendar
-          title="Adoption Events"
-          className={styles.linkIcon}
-        />
+        <FaCalendar title="Adoption Events" className={styles.linkIcon} />
         <span className={styles.expanded}>Adoption Events</span>
       </Link>
       <Link to="/animals/dogs">
-        <FaDog
-          title="Animals"
-          className={styles.linkIcon}
-        />
+        <FaDog title="Animals" className={styles.linkIcon} />
         <span className={styles.expanded}>Animals</span>
       </Link>
     </nav>

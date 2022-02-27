@@ -1,5 +1,5 @@
-import { DayOfWeek } from "./DayOfWeek";
-import { Species } from "./Species";
+import { DayOfWeek } from './DayOfWeek';
+import { Species } from './Species';
 
 export type AdoptionEventDto = {
   id: number;
@@ -9,4 +9,4 @@ export type AdoptionEventDto = {
   dayOfWeek: DayOfWeek;
   nextOccurrenceDate: string;
   timeZone: string;
-}
+};

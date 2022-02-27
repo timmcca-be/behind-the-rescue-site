@@ -19,34 +19,41 @@ export enum AdoptionEventPageTab {
 
 export type AdoptionEventPageProps = {
   tab: AdoptionEventPageTab;
-}
+};
 
 export type AdoptionEventPageParams = {
   adoptionEventID: string;
-}
+};
 
-export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
+export const AdoptionEventPage = ({ tab }: AdoptionEventPageProps) => {
   const params = useParams<AdoptionEventPageParams>();
   const adoptionEventID = Number.parseInt(params.adoptionEventID);
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
-  const { data: crateData } = useCrateReservations(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+  const { data: crateData } = useCrateReservations(
+    adoptionEventID,
+    adoptionEvent?.nextOccurrenceDate,
+  );
 
-  const nextOccurrenceDate = adoptionEvent ? format(parseISO(adoptionEvent.nextOccurrenceDate), 'EEEE, MMM d') : '';
+  const nextOccurrenceDate = adoptionEvent
+    ? format(parseISO(adoptionEvent.nextOccurrenceDate), 'EEEE, MMM d')
+    : '';
 
   return (
     <>
       <div className={styles.header}>
         <div>
           <h2>{adoptionEvent?.name}</h2>
-          <span><FaCalendar className={sharedStyles.icon} /> {nextOccurrenceDate}</span>
+          <span>
+            <FaCalendar className={sharedStyles.icon} /> {nextOccurrenceDate}
+          </span>
         </div>
         {tab === AdoptionEventPageTab.Crates && (
           <Link
             to={`/adoption-events/${adoptionEventID}/reserve-crate`}
             className={styles.actionButton}
           >
-            {"Reserve a crate"}
+            {'Reserve a crate'}
           </Link>
         )}
         {tab === AdoptionEventPageTab.MeetAndGreets && (
@@ -54,26 +61,22 @@ export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
             to={`/adoption-events/${adoptionEventID}/schedule-meet-and-greet`}
             className={styles.actionButton}
           >
-            {"Schedule a meet & greet"}
+            {'Schedule a meet & greet'}
           </Link>
         )}
       </div>
-      {
-        crateData && (
-          <CrateStacks crateStacks={crateData.crateStacks} />
-        )
-      }
+      {crateData && <CrateStacks crateStacks={crateData.crateStacks} />}
       <TabList
         tabs={[
           {
             id: AdoptionEventPageTab.Crates,
-            title: "Crates",
-            href: `/adoption-events/${adoptionEventID}`
+            title: 'Crates',
+            href: `/adoption-events/${adoptionEventID}`,
           },
           {
             id: AdoptionEventPageTab.MeetAndGreets,
-            title: "Meet & greets",
-            href: `/adoption-events/${adoptionEventID}/meet-and-greets`
+            title: 'Meet & greets',
+            href: `/adoption-events/${adoptionEventID}/meet-and-greets`,
           },
         ]}
         activeTabID={tab}
@@ -84,12 +87,13 @@ export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
           date={adoptionEvent.nextOccurrenceDate}
         />
       )}
-      {adoptionEvent !== undefined && tab === AdoptionEventPageTab.MeetAndGreets && (
-        <MeetAndGreetsPane
-          adoptionEventID={adoptionEventID}
-          date={adoptionEvent.nextOccurrenceDate}
-        />
-      )}
+      {adoptionEvent !== undefined &&
+        tab === AdoptionEventPageTab.MeetAndGreets && (
+          <MeetAndGreetsPane
+            adoptionEventID={adoptionEventID}
+            date={adoptionEvent.nextOccurrenceDate}
+          />
+        )}
     </>
   );
-}
+};

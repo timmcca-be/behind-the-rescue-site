@@ -14,12 +14,12 @@ import { Species } from '../../models/Species';
 
 export type ReserveCratePageParams = {
   adoptionEventID: string;
-}
+};
 
 enum ValidationError {
   CrateSizeNotSet = 'crate-size-not-set',
   NoAnimalsSelected = 'no-animals-selected',
-};
+}
 
 export const ReserveCratePage = () => {
   const params = useParams<ReserveCratePageParams>();
@@ -28,11 +28,14 @@ export const ReserveCratePage = () => {
   const history = useHistory();
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
-  const reserveCrateMutation = useReserveCrate(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+  const reserveCrateMutation = useReserveCrate(
+    adoptionEventID,
+    adoptionEvent?.nextOccurrenceDate,
+  );
 
   const availableAnimals = useAvailableAnimals(
     adoptionEvent?.availableSpecies ?? Species.Dog,
-    adoptionEvent?.nextOccurrenceDate ?? "",
+    adoptionEvent?.nextOccurrenceDate ?? '',
     {
       enabled: adoptionEvent !== undefined,
     },
@@ -58,27 +61,23 @@ export const ReserveCratePage = () => {
       fullyVaccinated,
     });
     history.push(`/adoption-events/${adoptionEventID}`);
-  }
+  };
 
   return (
     <>
       <h2>Reserve a crate</h2>
-      <form
-        className={styles.form}
-        onSubmit={onSubmit}
-      >
+      <form className={styles.form} onSubmit={onSubmit}>
         {displayedErrors[ValidationError.CrateSizeNotSet] && (
           <small className={styles.error}>Crate size must be selected</small>
         )}
         <label className={styles.inputGroup}>
           Crate size:{' '}
-          <CrateSizeSelect
-            crateSize={crateSize}
-            setCrateSize={setCrateSize}
-          />
+          <CrateSizeSelect crateSize={crateSize} setCrateSize={setCrateSize} />
         </label>
         {displayedErrors[ValidationError.NoAnimalsSelected] && (
-          <small className={styles.error}>At least one animal must be added</small>
+          <small className={styles.error}>
+            At least one animal must be added
+          </small>
         )}
         {adoptionEvent && (
           <AnimalMultiSelect
@@ -100,11 +99,9 @@ export const ReserveCratePage = () => {
           className={styles.submit}
           disabled={reserveCrateMutation.isLoading}
         >
-          {reserveCrateMutation.isLoading ? (
-            <Spinner />
-          ) : 'Reserve'}
+          {reserveCrateMutation.isLoading ? <Spinner /> : 'Reserve'}
         </button>
       </form>
     </>
-  )
-}
+  );
+};

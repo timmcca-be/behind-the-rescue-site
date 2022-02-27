@@ -1,4 +1,4 @@
-import { Species } from "./Species";
+import { Species } from './Species';
 
 export type AnimalDto = {
   id: number;
@@ -6,4 +6,4 @@ export type AnimalDto = {
   species: Species;
   photoLink: string;
   foster: string;
-}
+};

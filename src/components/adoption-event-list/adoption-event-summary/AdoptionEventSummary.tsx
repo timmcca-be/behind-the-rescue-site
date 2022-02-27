@@ -9,11 +9,18 @@ import { format, parseISO } from 'date-fns';
 
 export type AdoptionEventSummaryProps = {
   adoptionEvent: AdoptionEventDto;
-}
+};
 
-export const AdoptionEventSummary = ({ adoptionEvent }: AdoptionEventSummaryProps) => {
-  const dayOfWeek = `${adoptionEvent.dayOfWeek[0]}${adoptionEvent.dayOfWeek.substring(1).toLowerCase()}`;
-  const nextOccurrenceDate = format(parseISO(adoptionEvent.nextOccurrenceDate), 'MMM d');
+export const AdoptionEventSummary = ({
+  adoptionEvent,
+}: AdoptionEventSummaryProps) => {
+  const dayOfWeek = `${adoptionEvent.dayOfWeek[0]}${adoptionEvent.dayOfWeek
+    .substring(1)
+    .toLowerCase()}`;
+  const nextOccurrenceDate = format(
+    parseISO(adoptionEvent.nextOccurrenceDate),
+    'MMM d',
+  );
 
   return (
     <li>
@@ -26,10 +33,7 @@ export const AdoptionEventSummary = ({ adoptionEvent }: AdoptionEventSummaryProp
           <h3 className={styles.eventName}>{adoptionEvent.name}</h3>
           <span className={styles.date}>
             <span>
-              <FaCalendar
-                title="Day of week"
-                className={sharedStyles.icon}
-              />
+              <FaCalendar title="Day of week" className={sharedStyles.icon} />
               {dayOfWeek}s
             </span>
             <span>
@@ -44,4 +48,4 @@ export const AdoptionEventSummary = ({ adoptionEvent }: AdoptionEventSummaryProp
       </Link>
     </li>
   );
-}
+};

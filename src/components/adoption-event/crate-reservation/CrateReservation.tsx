@@ -8,7 +8,7 @@ import { AnimalLink } from '../../common/animal/animal-link/AnimalLink';
 
 export type CrateReservationProps = {
   crateReservation: CrateReservationDto;
-}
+};
 
 const formatCrateSize = (crateSize: CrateSize) => {
   switch (crateSize) {
@@ -21,22 +21,18 @@ const formatCrateSize = (crateSize: CrateSize) => {
     case CrateSize.ExtraLarge:
       return 'Extra large';
   }
-}
+};
 
-export const CrateReservation = ({ crateReservation }: CrateReservationProps) => (
+export const CrateReservation = ({
+  crateReservation,
+}: CrateReservationProps) => (
   <article className={styles.crateReservation}>
     <span className={styles.crateSize}>
-      <FaCube
-        title="Crate size"
-        className={sharedStyles.icon}
-      />
+      <FaCube title="Crate size" className={sharedStyles.icon} />
       {formatCrateSize(crateReservation.crateSize)}
     </span>
     {!crateReservation.fullyVaccinated && (
-      <span className={[
-        sharedStyles.iconData,
-        styles.warning,
-      ].join(' ')}>
+      <span className={[sharedStyles.iconData, styles.warning].join(' ')}>
         <FaExclamationTriangle
           title="Crate size"
           className={sharedStyles.icon}
@@ -45,14 +41,9 @@ export const CrateReservation = ({ crateReservation }: CrateReservationProps) =>
       </span>
     )}
     <ul className={sharedStyles.list}>
-      {
-        crateReservation.animals.map((animal) => (
-          <AnimalLink
-            key={animal.id}
-            animal={animal}
-          />
-        ))
-      }
+      {crateReservation.animals.map((animal) => (
+        <AnimalLink key={animal.id} animal={animal} />
+      ))}
     </ul>
   </article>
-)
+);

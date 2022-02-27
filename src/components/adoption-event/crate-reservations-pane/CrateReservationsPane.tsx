@@ -6,9 +6,12 @@ import { CrateReservation } from '../crate-reservation/CrateReservation';
 export type CrateReservationsPaneProps = {
   adoptionEventID: number;
   date: string;
-}
+};
 
-export const CrateReservationsPane = ({adoptionEventID, date}: CrateReservationsPaneProps) => {
+export const CrateReservationsPane = ({
+  adoptionEventID,
+  date,
+}: CrateReservationsPaneProps) => {
   const { data, isLoading } = useCrateReservations(adoptionEventID, date);
 
   return (
@@ -20,7 +23,7 @@ export const CrateReservationsPane = ({adoptionEventID, date}: CrateReservations
         />
       ))}
       {isLoading && <Spinner />}
-      {data?.crateReservations.length === 0 && "None yet!"}
+      {data?.crateReservations.length === 0 && 'None yet!'}
     </>
   );
-}
+};

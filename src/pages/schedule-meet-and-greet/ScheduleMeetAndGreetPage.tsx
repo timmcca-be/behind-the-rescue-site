@@ -13,13 +13,13 @@ import { Species } from '../../models/Species';
 
 export type ScheduleMeetAndGreetPageParams = {
   adoptionEventID: string;
-}
+};
 
 enum ValidationError {
   NoAnimalSelected = 'no-animal-selected',
   TimeNotSet = 'time-not-set',
   NoPotentialAdopterName = 'no-potential-adopter-name',
-};
+}
 
 export const ScheduleMeetAndGreetPage = () => {
   const params = useParams<ScheduleMeetAndGreetPageParams>();
@@ -28,24 +28,24 @@ export const ScheduleMeetAndGreetPage = () => {
   const history = useHistory();
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
-  const scheduleMeetAndGreetMutation = useScheduleMeetAndGreet(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+  const scheduleMeetAndGreetMutation = useScheduleMeetAndGreet(
+    adoptionEventID,
+    adoptionEvent?.nextOccurrenceDate,
+  );
 
-  const animals = useAnimals(
-    adoptionEvent?.availableSpecies ?? Species.Dog,
-    {
-      enabled: adoptionEvent !== undefined,
-    },
-  ).data?.animals;
+  const animals = useAnimals(adoptionEvent?.availableSpecies ?? Species.Dog, {
+    enabled: adoptionEvent !== undefined,
+  }).data?.animals;
 
   const [animal, setAnimal] = useState<AnimalDto | undefined>(undefined);
-  const [time, setTime] = useState<string>("");
-  const [potentialAdopterName, setPotentialAdopterName] = useState<string>("");
+  const [time, setTime] = useState<string>('');
+  const [potentialAdopterName, setPotentialAdopterName] = useState<string>('');
   const [fullyVaccinated, setFullyVaccinated] = useState(true);
 
-  const {displayedErrors, validate} = useValidation({
+  const { displayedErrors, validate } = useValidation({
     [ValidationError.NoAnimalSelected]: animal === undefined,
-    [ValidationError.TimeNotSet]: time === "",
-    [ValidationError.NoPotentialAdopterName]: potentialAdopterName === "",
+    [ValidationError.TimeNotSet]: time === '',
+    [ValidationError.NoPotentialAdopterName]: potentialAdopterName === '',
   });
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
@@ -64,15 +64,12 @@ export const ScheduleMeetAndGreetPage = () => {
       fullyVaccinated,
     });
     history.push(`/adoption-events/${adoptionEventID}/meet-and-greets`);
-  }
+  };
 
   return (
     <>
-      <h2>Schedule a meet {"&"} greet</h2>
-      <form
-        className={styles.form}
-        onSubmit={onSubmit}
-      >
+      <h2>Schedule a meet {'&'} greet</h2>
+      <form className={styles.form} onSubmit={onSubmit}>
         {displayedErrors[ValidationError.NoAnimalSelected] && (
           <small className={styles.error}>
             A {adoptionEvent?.availableSpecies.toLowerCase()} must be selected
@@ -90,7 +87,7 @@ export const ScheduleMeetAndGreetPage = () => {
           <small className={styles.error}>Time must be set</small>
         )}
         <label className={styles.inputGroup}>
-          Time:{" "}
+          Time:{' '}
           <input
             type="time"
             value={time}
@@ -101,7 +98,7 @@ export const ScheduleMeetAndGreetPage = () => {
           <small className={styles.error}>Time must be set</small>
         )}
         <label className={styles.inputGroup}>
-          Potential adopter name:{" "}
+          Potential adopter name:{' '}
           <input
             type="text"
             value={potentialAdopterName}
@@ -120,11 +117,9 @@ export const ScheduleMeetAndGreetPage = () => {
           className={styles.submit}
           disabled={scheduleMeetAndGreetMutation.isLoading}
         >
-          {scheduleMeetAndGreetMutation.isLoading ? (
-            <Spinner />
-          ) : 'Schedule'}
+          {scheduleMeetAndGreetMutation.isLoading ? <Spinner /> : 'Schedule'}
         </button>
       </form>
     </>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import { Sex } from "./Sex";
-import { Species } from "./Species";
+import { Sex } from './Sex';
+import { Species } from './Species';
 
 export type AnimalDetailsDto = {
   id: number;
@@ -12,4 +12,4 @@ export type AnimalDetailsDto = {
   monthsOld: number;
   breed: string;
   description: string;
-}
+};

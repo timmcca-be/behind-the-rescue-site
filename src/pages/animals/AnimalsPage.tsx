@@ -7,9 +7,9 @@ import { Species } from '../../models/Species';
 
 export type AnimalsPageProps = {
   species: Species;
-}
+};
 
-export const AnimalsPage = ({species}: AnimalsPageProps) => {
+export const AnimalsPage = ({ species }: AnimalsPageProps) => {
   const [filter, setFilter] = useState('');
   const animals = useAnimals(species).data?.animals;
 
@@ -20,14 +20,14 @@ export const AnimalsPage = ({species}: AnimalsPageProps) => {
         tabs={[
           {
             id: Species.Dog,
-            title: "Dogs",
-            href: "/animals/dogs",
+            title: 'Dogs',
+            href: '/animals/dogs',
           },
           {
             id: Species.Cat,
-            title: "Cats",
-            href: "/animals/cats",
-          }
+            title: 'Cats',
+            href: '/animals/cats',
+          },
         ]}
         activeTabID={species}
       />

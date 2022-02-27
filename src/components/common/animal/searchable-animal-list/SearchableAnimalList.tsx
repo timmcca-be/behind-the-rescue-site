@@ -9,7 +9,7 @@ export type SearchableAnimalListProps = {
   children: (animal: AnimalDto) => ReactElement;
   filter: string;
   setFilter: (value: string) => void;
-}
+};
 
 export const SearchableAnimalList = ({
   animals,
@@ -27,19 +27,17 @@ export const SearchableAnimalList = ({
       />
     </label>
     {animals ? (
-      <ul className={[
-        sharedStyles.list,
-        styles.animals,
-      ].join(' ')}>
+      <ul className={[sharedStyles.list, styles.animals].join(' ')}>
         {animals
-          .filter((animal) => animal.name.toLowerCase().startsWith(filter.toLowerCase()))
+          .filter((animal) =>
+            animal.name.toLowerCase().startsWith(filter.toLowerCase()),
+          )
           .map((animal) => (
-            <Fragment key={animal.id}>
-              {createChild(animal)}
-            </Fragment>
-          ))
-        }
+            <Fragment key={animal.id}>{createChild(animal)}</Fragment>
+          ))}
       </ul>
-    ) : <Spinner />}
+    ) : (
+      <Spinner />
+    )}
   </>
 );

@@ -7,7 +7,7 @@ export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
 
   const [displayedErrors, setDisplayedErrors] = useState(() => {
     const initialErrors: Partial<Errors<T>> = {};
-    errorNames.forEach((key) => initialErrors[key] = false);
+    errorNames.forEach((key) => (initialErrors[key] = false));
     return initialErrors as Record<T, boolean>;
   });
 
@@ -28,10 +28,12 @@ export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
   if (areDisplayedErrorsDirty) {
     setDisplayedErrors(newDisplayedErrors as Errors<T>);
   }
-  
+
   const validate = () => {
-    const isValid = errorNames
-      .reduce((acc, name) => acc && !currentErrors[name], true);
+    const isValid = errorNames.reduce(
+      (acc, name) => acc && !currentErrors[name],
+      true,
+    );
 
     if (!isValid) {
       setDisplayedErrors(currentErrors);
@@ -43,4 +45,4 @@ export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
     displayedErrors,
     validate,
   };
-}
+};

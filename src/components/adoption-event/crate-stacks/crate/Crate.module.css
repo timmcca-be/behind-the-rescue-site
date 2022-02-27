@@ -18,7 +18,8 @@
   height: 2.4rem;
 }
 
-.emptyCrate, .fullCrate {
+.emptyCrate,
+.fullCrate {
   border: 3px solid var(--primary);
   border-radius: 3px;
   display: flex;

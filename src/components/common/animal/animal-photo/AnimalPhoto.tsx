@@ -5,7 +5,7 @@ import styles from './AnimalPhoto.module.css';
 
 export type AnimalPhotoProps = {
   animal: AnimalDto;
-}
+};
 
 export const AnimalPhoto = ({ animal }: AnimalPhotoProps) => (
   <LazyLoadImage

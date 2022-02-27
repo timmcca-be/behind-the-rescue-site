@@ -23,7 +23,8 @@
   }
 }
 
-.date, .date > span {
+.date,
+.date > span {
   display: flex;
   align-items: center;
 }

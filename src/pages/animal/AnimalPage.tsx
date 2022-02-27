@@ -9,7 +9,7 @@ import sharedStyles from '../../components/common/sharedStyles.module.css';
 
 export type AnimalPageParams = {
   animalID: string;
-}
+};
 
 const formatSex = (sex: Sex) => `${sex[0]}${sex.substring(1).toLowerCase()}`;
 
@@ -18,7 +18,7 @@ const decodeHtmlEntities = (input: string) =>
     .split('<br/>')
     .filter((paragraph) => paragraph.trim() !== '')
     .map((paragraph) => {
-      const doc = new DOMParser().parseFromString(paragraph, "text/html");
+      const doc = new DOMParser().parseFromString(paragraph, 'text/html');
       return doc.documentElement.textContent;
     });
 
@@ -35,10 +35,7 @@ export const AnimalPage = () => {
   const yearsOld = Math.floor(animal.monthsOld / 12);
   const monthsOld = animal.monthsOld % 12;
 
-  const iconDataClass = [
-    sharedStyles.iconData,
-    styles.iconData,
-  ].join(' ')
+  const iconDataClass = [sharedStyles.iconData, styles.iconData].join(' ');
 
   return (
     <>
@@ -66,8 +63,7 @@ export const AnimalPage = () => {
             <FaBirthdayCake title="Age" className={sharedStyles.icon} />
             {yearsOld > 0 && `${yearsOld} years`}
             {yearsOld > 0 && monthsOld > 0 && ', '}
-            {monthsOld > 0 && `${monthsOld} months`}
-            {' '}old
+            {monthsOld > 0 && `${monthsOld} months`} old
           </span>
           <span className={iconDataClass}>
             <FaDna title="Breed" className={sharedStyles.icon} />
@@ -76,10 +72,8 @@ export const AnimalPage = () => {
         </section>
       </section>
       {decodeHtmlEntities(animal.description).map((paragraph) => (
-        <p className={styles.description}>
-          {paragraph}
-        </p>
+        <p className={styles.description}>{paragraph}</p>
       ))}
     </>
   );
-}
+};

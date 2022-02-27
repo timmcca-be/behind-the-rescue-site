@@ -25,4 +25,4 @@ export const getDayIndex = (dayOfWeek: DayOfWeek) => {
     case DayOfWeek.Saturday:
       return 6;
   }
-}
+};

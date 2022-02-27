@@ -7,7 +7,7 @@ import dogPaw from './dog_paw.svg';
 
 export type AdoptionEventIconProps = {
   adoptionEvent: AdoptionEventDto;
-}
+};
 
 const getLocationColor = (location: string) => {
   switch (location) {
@@ -24,9 +24,11 @@ const getLocationColor = (location: string) => {
     default:
       return '#555';
   }
-}
+};
 
-export const AdoptionEventIcon = ({ adoptionEvent }: AdoptionEventIconProps) => (
+export const AdoptionEventIcon = ({
+  adoptionEvent,
+}: AdoptionEventIconProps) => (
   <section
     className={styles.icon}
     style={{
@@ -38,9 +40,13 @@ export const AdoptionEventIcon = ({ adoptionEvent }: AdoptionEventIconProps) => 
       alt=""
       className={styles.paw}
     />
-    <p className={[
-      styles.location,
-      adoptionEvent.location.length > 3 ? styles.longLocation : ''
-    ].join(' ')}>{adoptionEvent.location}</p>
+    <p
+      className={[
+        styles.location,
+        adoptionEvent.location.length > 3 ? styles.longLocation : '',
+      ].join(' ')}
+    >
+      {adoptionEvent.location}
+    </p>
   </section>
-)
+);

@@ -12,7 +12,9 @@
   flex-wrap: wrap;
 }
 
-.filterButton, .selectedFilterButton, .clearFilterButton {
+.filterButton,
+.selectedFilterButton,
+.clearFilterButton {
   font-family: var(--content-font);
   border: 1px solid var(--primary);
   border-radius: 3px;
@@ -24,7 +26,8 @@
   margin-left: 0.5rem;
 }
 
-.filterButton, .clearFilterButton {
+.filterButton,
+.clearFilterButton {
   background-color: transparent;
   color: var(--primary);
 }

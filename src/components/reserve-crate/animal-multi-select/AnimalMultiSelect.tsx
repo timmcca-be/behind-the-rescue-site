@@ -14,7 +14,7 @@ export type AnimalMultiSelectProps = {
   selectableAnimals?: AnimalDto[];
   selectedAnimals: AnimalDto[];
   setSelectedAnimals: Dispatch<SetStateAction<AnimalDto[]>>;
-}
+};
 
 export const AnimalMultiSelect = ({
   species,
@@ -29,18 +29,18 @@ export const AnimalMultiSelect = ({
 
   useEffect(() => setFilter(''), [isModalOpen]);
 
-  const addAnimal = (animal: AnimalDto) => setSelectedAnimals((animals) => animals.concat([animal]));
-  const removeAnimal = (animalID: number) => setSelectedAnimals((animals) =>
-    animals.filter((animal) => animal.id !== animalID));
-  
+  const addAnimal = (animal: AnimalDto) =>
+    setSelectedAnimals((animals) => animals.concat([animal]));
+  const removeAnimal = (animalID: number) =>
+    setSelectedAnimals((animals) =>
+      animals.filter((animal) => animal.id !== animalID),
+    );
+
   const selectedAnimalIDs = new Set(selectedAnimals.map((animal) => animal.id));
-  
+
   return (
     <>
-      <ul className={[
-        sharedStyles.list,
-        styles.animals,
-      ].join(' ')}>
+      <ul className={[sharedStyles.list, styles.animals].join(' ')}>
         {selectedAnimals.map((animal) => (
           <RemovableAnimal
             key={animal.id}
@@ -70,8 +70,10 @@ export const AnimalMultiSelect = ({
         >
           {(animal) => {
             const isSelected = selectedAnimalIDs.has(animal.id);
-            const toggle = isSelected ? () => removeAnimal(animal.id) : () => addAnimal(animal);
-            
+            const toggle = isSelected
+              ? () => removeAnimal(animal.id)
+              : () => addAnimal(animal);
+
             return (
               <AnimalToggle
                 key={animal.id}
@@ -79,16 +81,13 @@ export const AnimalMultiSelect = ({
                 checked={isSelected}
                 toggle={toggle}
               />
-            )
+            );
           }}
         </SearchableAnimalList>
-        <button
-          onClick={closeModal}
-          className={styles.done}
-        >
+        <button onClick={closeModal} className={styles.done}>
           Done
         </button>
       </Modal>
     </>
   );
-}
+};

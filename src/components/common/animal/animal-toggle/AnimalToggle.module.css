@@ -1,7 +1,7 @@
 .check {
   font-size: 3rem;
   margin-right: 1rem;
-  color: var(--confirm)
+  color: var(--confirm);
 }
 
 .selected > * {

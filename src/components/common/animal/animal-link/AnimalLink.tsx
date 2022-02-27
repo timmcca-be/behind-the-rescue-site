@@ -8,19 +8,18 @@ import sharedStyles from '../../sharedStyles.module.css';
 
 export type AnimalLinkProps = {
   animal: AnimalDto;
-}
+};
 
 export const AnimalLink = ({ animal }: AnimalLinkProps) => (
   <li className={sharedStyles.animalListItem}>
     <Link
       to={`/animals/${animal.id}`}
-      className={[
-        sharedStyles.animalDataContainer,
-        styles.animalLink,
-      ].join(' ')}
+      className={[sharedStyles.animalDataContainer, styles.animalLink].join(
+        ' ',
+      )}
     >
       <AnimalPhoto animal={animal} />
       <AnimalInfo animal={animal} />
     </Link>
   </li>
-)
+);

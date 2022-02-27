@@ -4,8 +4,8 @@ import styles from './Spinner.module.css';
 
 export type SpinnerProps = {
   title?: string;
-}
+};
 
 export const Spinner = ({ title }: SpinnerProps) => (
   <FaSpinner title={title} className={styles.spinner} />
-)
+);

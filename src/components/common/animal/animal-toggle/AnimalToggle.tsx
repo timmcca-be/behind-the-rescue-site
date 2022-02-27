@@ -10,7 +10,7 @@ export type AnimalToggleProps = {
   animal: AnimalDto;
   checked: boolean;
   toggle: () => void;
-}
+};
 
 export const AnimalToggle = ({
   animal,

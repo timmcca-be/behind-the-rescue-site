@@ -5,10 +5,11 @@ import { GetAnimalsResponse } from './useAvailableAnimals';
 
 export type UseAnimalsOptions = {
   enabled: boolean;
-}
+};
 
-export const useAnimals = (species: Species, options?: UseAnimalsOptions) => useQuery(
-  ['animals', species],
-  () => apiRequest<GetAnimalsResponse>(`/animals/${species.toLowerCase()}s`),
-  options,
-);
+export const useAnimals = (species: Species, options?: UseAnimalsOptions) =>
+  useQuery(
+    ['animals', species],
+    () => apiRequest<GetAnimalsResponse>(`/animals/${species.toLowerCase()}s`),
+    options,
+  );

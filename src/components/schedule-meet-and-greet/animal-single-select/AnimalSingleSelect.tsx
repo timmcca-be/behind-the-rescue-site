@@ -15,7 +15,7 @@ export type AnimalSingleSelectProps = {
   selectableAnimals?: AnimalDto[];
   selectedAnimal: AnimalDto | undefined;
   setSelectedAnimal: Dispatch<SetStateAction<AnimalDto | undefined>>;
-}
+};
 
 export const AnimalSingleSelect = ({
   species,
@@ -29,7 +29,7 @@ export const AnimalSingleSelect = ({
   const [filter, setFilter] = useState('');
 
   useEffect(() => setFilter(''), [isModalOpen]);
-  
+
   return (
     <>
       {selectedAnimal !== undefined && (
@@ -66,13 +66,10 @@ export const AnimalSingleSelect = ({
             />
           )}
         </SearchableAnimalList>
-        <button
-          onClick={closeModal}
-          className={styles.done}
-        >
+        <button onClick={closeModal} className={styles.done}>
           Done
         </button>
       </Modal>
     </>
   );
-}
+};
