@@ -69,6 +69,15 @@ export const AnimalPage = () => {
             <FaDna title="Breed" className={sharedStyles.icon} />
             {animal.breed}
           </span>
+          <a
+            className={styles.facebookLink}
+            target="_blank"
+            href={`https://www.facebook.com/groups/262504977256582/search?q=${encodeURIComponent(
+              animal.name,
+            )}`}
+          >
+            Search on Facebook
+          </a>
         </section>
       </section>
       {decodeHtmlEntities(animal.description).map((paragraph) => (

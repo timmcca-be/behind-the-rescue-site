@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { FaDog } from 'react-icons/fa';
+import { FaCat, FaDog } from 'react-icons/fa';
 import { AnimalDto } from '../../../models/AnimalDto';
 import { Species } from '../../../models/Species';
 import styles from './AnimalSingleSelect.module.css';
@@ -43,7 +43,8 @@ export const AnimalSingleSelect = ({
         onClick={() => setModalOpen(true)}
         className={styles.addAnimals}
       >
-        <FaDog className={sharedStyles.icon} />
+        {species === Species.Dog && <FaDog className={sharedStyles.icon} />}
+        {species === Species.Cat && <FaCat className={sharedStyles.icon} />}
         Select {species.toLowerCase()}
       </button>
       <Modal
