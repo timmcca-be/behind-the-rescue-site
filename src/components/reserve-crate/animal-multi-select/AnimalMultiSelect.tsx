@@ -4,25 +4,25 @@ import { FaPlus } from 'react-icons/fa';
 import { AnimalDto } from '../../../models/AnimalDto';
 import { Species } from '../../../models/Species';
 import { RemovableAnimal } from '../removable-animal/RemovableAnimal';
-import styles from './AnimalSelect.module.css';
+import styles from './AnimalMultiSelect.module.css';
 import sharedStyles from '../../common/sharedStyles.module.css';
 import { useAvailableAnimals } from '../../../hooks/api/useAvailableAnimals';
 import { SearchableAnimalList } from '../../common/animal/searchable-animal-list/SearchableAnimalList';
-import { AnimalToggle } from './animal-toggle/AnimalToggle';
+import { AnimalToggle } from '../../common/animal/animal-toggle/AnimalToggle';
 
-export type AnimalSelectProps = {
+export type AnimalMultiSelectProps = {
   species: Species;
   date: string;
   selectedAnimals: AnimalDto[];
   setSelectedAnimals: Dispatch<SetStateAction<AnimalDto[]>>;
 }
 
-export const AnimalSelect = ({
+export const AnimalMultiSelect = ({
   species,
   date,
   selectedAnimals,
   setSelectedAnimals,
-}: AnimalSelectProps) => {
+}: AnimalMultiSelectProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const closeModal = () => setModalOpen(false);
 

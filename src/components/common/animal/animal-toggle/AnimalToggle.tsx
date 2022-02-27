@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimalDto } from '../../../../models/AnimalDto';
-import { AnimalInfo } from '../../../common/animal/animal-info/AnimalInfo';
-import { AnimalPhoto } from '../../../common/animal/animal-photo/AnimalPhoto';
+import { AnimalInfo } from '../animal-info/AnimalInfo';
+import { AnimalPhoto } from '../animal-photo/AnimalPhoto';
 import styles from './AnimalToggle.module.css';
 import sharedStyles from '../../../common/sharedStyles.module.css';
 import { FaCheckCircle } from 'react-icons/fa';

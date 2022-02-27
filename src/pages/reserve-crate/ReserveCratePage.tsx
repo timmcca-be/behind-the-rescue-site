@@ -3,12 +3,12 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useAdoptionEvent } from '../../hooks/api/useAdoptionEvent';
 import { AnimalDto } from '../../models/AnimalDto';
 import { CrateSize } from '../../models/CrateSize';
-import styles from './ReserveCratePage.module.css';
 import { useReserveCrate } from '../../hooks/api/useReserveCrate';
 import { Spinner } from '../../components/common/spinner/Spinner';
 import { CrateSizeSelect } from '../../components/reserve-crate/crate-size-select/CrateSizeSelect';
-import { AnimalSelect } from '../../components/reserve-crate/animal-select/AnimalSelect';
+import { AnimalMultiSelect } from '../../components/reserve-crate/animal-multi-select/AnimalMultiSelect';
 import { useValidation } from '../../hooks/validation/useValidation';
+import styles from '../../components/common/formStyles.module.css';
 
 export type ReserveCratePageParams = {
   adoptionEventID: string;
@@ -71,7 +71,7 @@ export const ReserveCratePage = () => {
           <small className={styles.error}>At least one animal must be added</small>
         )}
         {adoptionEvent && (
-          <AnimalSelect
+          <AnimalMultiSelect
             species={adoptionEvent.availableSpecies}
             date={adoptionEvent.nextOccurrenceDate}
             selectedAnimals={animals}

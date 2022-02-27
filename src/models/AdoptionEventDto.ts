@@ -8,4 +8,5 @@ export type AdoptionEventDto = {
   availableSpecies: Species;
   dayOfWeek: DayOfWeek;
   nextOccurrenceDate: string;
+  timeZone: string;
 }

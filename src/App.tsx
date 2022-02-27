@@ -9,6 +9,7 @@ import { Header } from './components/common/header/Header';
 import styles from './App.module.css'
 import { Spinner } from './components/common/spinner/Spinner';
 import { Species } from './models/Species';
+import { ScheduleMeetAndGreetPage } from './pages/schedule-meet-and-greet/ScheduleMeetAndGreetPage';
 
 const queryClient = new QueryClient();
 
@@ -43,9 +44,19 @@ export const App = () => (
               <ReserveCratePage />
             </Suspense>
           </Route>
+          <Route path="/adoption-events/:adoptionEventID/schedule-meet-and-greet">
+            <Suspense fallback={<Spinner />}>
+              <ScheduleMeetAndGreetPage />
+            </Suspense>
+          </Route>
+          <Route path="/adoption-events/:adoptionEventID/meet-and-greets">
+            <Suspense fallback={<Spinner />}>
+              <AdoptionEventPage tab="meet-and-greets" />
+            </Suspense>
+          </Route>
           <Route path="/adoption-events/:adoptionEventID">
             <Suspense fallback={<Spinner />}>
-              <AdoptionEventPage />
+              <AdoptionEventPage tab="crates" />
             </Suspense>
           </Route>
           <Route path="/animals/dogs">

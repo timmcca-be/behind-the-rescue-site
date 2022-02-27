@@ -10,7 +10,7 @@
   margin: 2rem 0 0.5rem 0;
 }
 
-.reserveButton {
+.actionButton {
   background-color: var(--primary);
   border-radius: 3px;
   border: none;
@@ -22,8 +22,12 @@
   transition: background-color 0.1s;
 }
 
-.reserveButton:active {
+.actionButton:active {
   background-color: var(--primary-dark);
+}
+
+.actionButton:hover {
+  color: var(--background);
 }
 
 .meetAndGreets {

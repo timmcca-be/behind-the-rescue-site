@@ -19,7 +19,7 @@ export const SearchableAnimalList = ({
 }: SearchableAnimalListProps) => (
   <>
     <label className={styles.filter}>
-      Filter animals:{' '}
+      Filter:{' '}
       <input
         type="text"
         value={filter}

@@ -15,9 +15,12 @@ export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
   const newDisplayedErrors: Errors<T> = {};
   for (const name of errorNames) {
     const previousValue = displayedErrors[name];
+    // on each render, we check every error that is currently displayed.
+    // if it has been resolved, we hide the message.
+    // we don't want to start displaying new errors until the user tries to submit again.
     const newValue = displayedErrors[name] && currentErrors[name];
-    displayedErrors[name] = newValue;
-    if (previousValue !== displayedErrors[name]) {
+    newDisplayedErrors[name] = newValue;
+    if (previousValue !== newValue) {
       areDisplayedErrorsDirty = true;
     }
   }
