@@ -1,18 +1,18 @@
 import { useState } from 'react';
 
-export type Errors<T extends string> = Partial<Record<T, boolean>>;
+export type Errors<T extends string> = Record<T, boolean>;
 
 export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
   const errorNames = Object.keys(currentErrors) as T[];
 
   const [displayedErrors, setDisplayedErrors] = useState(() => {
-    const initialErrors: Errors<T> = {};
+    const initialErrors: Partial<Errors<T>> = {};
     errorNames.forEach((key) => initialErrors[key] = false);
-    return initialErrors;
+    return initialErrors as Record<T, boolean>;
   });
 
   let areDisplayedErrorsDirty = false;
-  const newDisplayedErrors: Errors<T> = {};
+  const newDisplayedErrors: Partial<Errors<T>> = {};
   for (const name of errorNames) {
     const previousValue = displayedErrors[name];
     // on each render, we check every error that is currently displayed.
@@ -26,7 +26,7 @@ export const useValidation = <T extends string>(currentErrors: Errors<T>) => {
   }
 
   if (areDisplayedErrorsDirty) {
-    setDisplayedErrors(newDisplayedErrors);
+    setDisplayedErrors(newDisplayedErrors as Errors<T>);
   }
   
   const validate = () => {

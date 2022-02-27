@@ -12,8 +12,13 @@ import { TabList } from '../../components/common/tab-list/TabList';
 import { CrateReservationsPane } from '../../components/adoption-event/crate-reservations-pane/CrateReservationsPane';
 import { MeetAndGreetsPane } from '../../components/adoption-event/meet-and-greets-pane/MeetAndGreetsPane';
 
+export enum AdoptionEventPageTab {
+  Crates = 'crates',
+  MeetAndGreets = 'meet-and-greets',
+}
+
 export type AdoptionEventPageProps = {
-  tab: "crates" | "meet-and-greets";
+  tab: AdoptionEventPageTab;
 }
 
 export type AdoptionEventPageParams = {
@@ -36,7 +41,7 @@ export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
           <h2>{adoptionEvent?.name}</h2>
           <span><FaCalendar className={sharedStyles.icon} /> {nextOccurrenceDate}</span>
         </div>
-        {tab === "crates" && (
+        {tab === AdoptionEventPageTab.Crates && (
           <Link
             to={`/adoption-events/${adoptionEventID}/reserve-crate`}
             className={styles.actionButton}
@@ -44,7 +49,7 @@ export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
             {"Reserve a crate"}
           </Link>
         )}
-        {tab === "meet-and-greets" && (
+        {tab === AdoptionEventPageTab.MeetAndGreets && (
           <Link
             to={`/adoption-events/${adoptionEventID}/schedule-meet-and-greet`}
             className={styles.actionButton}
@@ -61,25 +66,25 @@ export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
       <TabList
         tabs={[
           {
-            id: "crates",
+            id: AdoptionEventPageTab.Crates,
             title: "Crates",
             href: `/adoption-events/${adoptionEventID}`
           },
           {
-            id: "meet-and-greets",
+            id: AdoptionEventPageTab.MeetAndGreets,
             title: "Meet & greets",
             href: `/adoption-events/${adoptionEventID}/meet-and-greets`
           },
         ]}
         activeTabID={tab}
       />
-      {adoptionEvent !== undefined && tab === "crates" && (
+      {adoptionEvent !== undefined && tab === AdoptionEventPageTab.Crates && (
         <CrateReservationsPane
           adoptionEventID={adoptionEventID}
           date={adoptionEvent.nextOccurrenceDate}
         />
       )}
-      {adoptionEvent !== undefined && tab === "meet-and-greets" && (
+      {adoptionEvent !== undefined && tab === AdoptionEventPageTab.MeetAndGreets && (
         <MeetAndGreetsPane
           adoptionEventID={adoptionEventID}
           date={adoptionEvent.nextOccurrenceDate}

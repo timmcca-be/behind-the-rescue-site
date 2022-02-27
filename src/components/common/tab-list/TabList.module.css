@@ -6,11 +6,15 @@
 
 .tab {
   flex-grow: 1;
+  flex-basis: 0;
   text-align: center;
   text-decoration: none;
   padding: 1rem;
   border-bottom: 2px solid var(--shadow);
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tab.active {

@@ -16,9 +16,9 @@ export type ScheduleMeetAndGreetPageParams = {
 }
 
 enum ValidationError {
-  NoAnimalSelected = 'noAnimalSelected',
-  TimeNotSet = 'timeNotSet',
-  NoPotentialAdopterName = 'noPotentialAdopterName',
+  NoAnimalSelected = 'no-animal-selected',
+  TimeNotSet = 'time-not-set',
+  NoPotentialAdopterName = 'no-potential-adopter-name',
 };
 
 export const ScheduleMeetAndGreetPage = () => {

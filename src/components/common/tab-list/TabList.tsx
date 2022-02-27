@@ -2,30 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from './TabList.module.css';
 
-export type TabDefinition = {
-  id: string;
+export type TabDefinition<T> = {
+  id: T;
   title: string;
   href: string;
 }
 
-export type TabListProps = {
-  tabs: TabDefinition[];
-  activeTabID: string;
+export type TabListProps<T> = {
+  tabs: TabDefinition<T>[];
+  activeTabID: T;
 }
 
-export const TabList = ({tabs, activeTabID}: TabListProps) => (
-  <nav className={styles.tabList}>
-    {tabs.map((tab) => (
-      <Link
-        key={tab.id}
-        to={tab.href}
-        className={[
-          styles.tab,
-          tab.id === activeTabID ? styles.active : ""
-        ].join(" ")}
-      >
-        {tab.title}
-      </Link>
-    ))}
-  </nav>
-)
+export function TabList <T extends string>({tabs, activeTabID}: TabListProps<T>) {
+  return (
+    <nav className={styles.tabList}>
+      {tabs.map((tab) => (
+        <Link
+          key={tab.id}
+          to={tab.href}
+          className={[
+            styles.tab,
+            tab.id === activeTabID ? styles.active : ""
+          ].join(" ")}
+        >
+          {tab.title}
+        </Link>
+      ))}
+    </nav>
+  );
+}

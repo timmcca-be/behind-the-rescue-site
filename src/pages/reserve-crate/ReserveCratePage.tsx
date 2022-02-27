@@ -17,8 +17,8 @@ export type ReserveCratePageParams = {
 }
 
 enum ValidationError {
-  CrateSizeNotSet = 'crateSizeNotSet',
-  NoAnimalsSelected = 'noAnimalsSelected',
+  CrateSizeNotSet = 'crate-size-not-set',
+  NoAnimalsSelected = 'no-animals-selected',
 };
 
 export const ReserveCratePage = () => {

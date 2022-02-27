@@ -9,7 +9,7 @@ import { Header } from './components/common/header/Header';
 import styles from './App.module.css'
 import { Spinner } from './components/common/spinner/Spinner';
 import { Species } from './models/Species';
-import { ScheduleMeetAndGreetPage } from './pages/schedule-meet-and-greet/ScheduleMeetAndGreetPage';
+import { AdoptionEventPageTab } from './pages/adoption-event/AdoptionEventPage';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +24,10 @@ const AdoptionEventsPage = lazy(() =>
 const ReserveCratePage = lazy(() =>
   import('./pages/reserve-crate/ReserveCratePage')
     .then((module) => ({ default: module.ReserveCratePage })));
+
+const ScheduleMeetAndGreetPage = lazy(() =>
+  import('./pages/schedule-meet-and-greet/ScheduleMeetAndGreetPage')
+    .then((module) => ({ default: module.ScheduleMeetAndGreetPage })));
 
 const AnimalPage = lazy(() =>
   import('./pages/animal/AnimalPage')
@@ -51,12 +55,12 @@ export const App = () => (
           </Route>
           <Route path="/adoption-events/:adoptionEventID/meet-and-greets">
             <Suspense fallback={<Spinner />}>
-              <AdoptionEventPage tab="meet-and-greets" />
+              <AdoptionEventPage tab={AdoptionEventPageTab.MeetAndGreets} />
             </Suspense>
           </Route>
           <Route path="/adoption-events/:adoptionEventID">
             <Suspense fallback={<Spinner />}>
-              <AdoptionEventPage tab="crates" />
+              <AdoptionEventPage tab={AdoptionEventPageTab.Crates} />
             </Suspense>
           </Route>
           <Route path="/animals/dogs">
