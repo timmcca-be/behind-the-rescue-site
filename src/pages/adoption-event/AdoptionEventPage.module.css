@@ -29,7 +29,3 @@
 .actionButton:hover {
   color: var(--background);
 }
-
-.meetAndGreets {
-  margin-bottom: 2rem;
-}

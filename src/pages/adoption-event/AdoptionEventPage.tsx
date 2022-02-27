@@ -7,11 +7,10 @@ import { useAdoptionEvent } from '../../hooks/api/useAdoptionEvent';
 import { useCrateReservations } from '../../hooks/api/useCrateReservations';
 import styles from './AdoptionEventPage.module.css';
 import sharedStyles from '../../components/common/sharedStyles.module.css';
-import { CrateReservation } from '../../components/adoption-event/crate-reservation/CrateReservation';
 import { Link } from 'react-router-dom';
-import { useMeetAndGreets } from '../../hooks/api/useMeetAndGreets';
-import { AnimalLink } from '../../components/common/animal/animal-link/AnimalLink';
 import { TabList } from '../../components/common/tab-list/TabList';
+import { CrateReservationsPane } from '../../components/adoption-event/crate-reservations-pane/CrateReservationsPane';
+import { MeetAndGreetsPane } from '../../components/adoption-event/meet-and-greets-pane/MeetAndGreetsPane';
 
 export type AdoptionEventPageProps = {
   tab: "crates" | "meet-and-greets";
@@ -21,13 +20,12 @@ export type AdoptionEventPageParams = {
   adoptionEventID: string;
 }
 
-export const AdoptionEventPage = ({tab: state}: AdoptionEventPageProps) => {
+export const AdoptionEventPage = ({tab}: AdoptionEventPageProps) => {
   const params = useParams<AdoptionEventPageParams>();
   const adoptionEventID = Number.parseInt(params.adoptionEventID);
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
   const { data: crateData } = useCrateReservations(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
-  const meetAndGreets = useMeetAndGreets(adoptionEventID, adoptionEvent?.nextOccurrenceDate).data?.meetAndGreets;
 
   const nextOccurrenceDate = adoptionEvent ? format(parseISO(adoptionEvent.nextOccurrenceDate), 'EEEE, MMM d') : '';
 
@@ -38,7 +36,7 @@ export const AdoptionEventPage = ({tab: state}: AdoptionEventPageProps) => {
           <h2>{adoptionEvent?.name}</h2>
           <span><FaCalendar className={sharedStyles.icon} /> {nextOccurrenceDate}</span>
         </div>
-        {state === "crates" && (
+        {tab === "crates" && (
           <Link
             to={`/adoption-events/${adoptionEventID}/reserve-crate`}
             className={styles.actionButton}
@@ -46,7 +44,7 @@ export const AdoptionEventPage = ({tab: state}: AdoptionEventPageProps) => {
             {"Reserve a crate"}
           </Link>
         )}
-        {state === "meet-and-greets" && (
+        {tab === "meet-and-greets" && (
           <Link
             to={`/adoption-events/${adoptionEventID}/schedule-meet-and-greet`}
             className={styles.actionButton}
@@ -73,30 +71,19 @@ export const AdoptionEventPage = ({tab: state}: AdoptionEventPageProps) => {
             href: `/adoption-events/${adoptionEventID}/meet-and-greets`
           },
         ]}
-        activeTabID={state}
+        activeTabID={tab}
       />
-      {state === "crates" &&
-        crateData?.crateReservations.map((crateReservation) => (
-          <CrateReservation
-            key={crateReservation.id}
-            crateReservation={crateReservation}
-          />
-        ))
-      }
-      {state === "meet-and-greets" && (
-        <ul className={[
-          sharedStyles.list,
-          styles.meetAndGreets,
-        ].join(' ')}>
-          {
-            meetAndGreets?.map((meetAndGreet) => (
-              <AnimalLink
-                key={meetAndGreet.id}
-                animal={meetAndGreet.animal}
-              />
-            ))
-          }
-        </ul>
+      {adoptionEvent !== undefined && tab === "crates" && (
+        <CrateReservationsPane
+          adoptionEventID={adoptionEventID}
+          date={adoptionEvent.nextOccurrenceDate}
+        />
+      )}
+      {adoptionEvent !== undefined && tab === "meet-and-greets" && (
+        <MeetAndGreetsPane
+          adoptionEventID={adoptionEventID}
+          date={adoptionEvent.nextOccurrenceDate}
+        />
       )}
     </>
   );
