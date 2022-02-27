@@ -29,6 +29,10 @@
   margin: 0 0.5rem;
 }
 
+.appName:hover {
+  color: var(--primary);
+}
+
 .navigation {
   flex-grow: 1;
   display: flex;
