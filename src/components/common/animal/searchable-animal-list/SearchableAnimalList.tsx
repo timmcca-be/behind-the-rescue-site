@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { AnimalDto } from '../../../../models/AnimalDto';
 import styles from './SearchableAnimalList.module.css';
 import sharedStyles from '../../sharedStyles.module.css';
@@ -33,7 +33,11 @@ export const SearchableAnimalList = ({
       ].join(' ')}>
         {animals
           .filter((animal) => animal.name.toLowerCase().startsWith(filter.toLowerCase()))
-          .map(createChild)
+          .map((animal) => (
+            <Fragment key={animal.id}>
+              {createChild(animal)}
+            </Fragment>
+          ))
         }
       </ul>
     ) : <Spinner />}

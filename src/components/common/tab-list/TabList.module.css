@@ -1,0 +1,22 @@
+.tabList {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.tab {
+  flex-grow: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem;
+  border-bottom: 2px solid var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.tab.active {
+  border-bottom-color: var(--primary);
+}
+
+.tab:hover {
+  border-bottom-color: var(--primary-light);
+}

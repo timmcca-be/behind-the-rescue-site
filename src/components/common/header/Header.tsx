@@ -17,7 +17,7 @@ export const Header = () => (
         />
         <span className={styles.expanded}>Adoption Events</span>
       </Link>
-      <Link to="/animals">
+      <Link to="/animals/dogs">
         <FaDog
           title="Animals"
           className={styles.linkIcon}

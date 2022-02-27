@@ -8,6 +8,7 @@ import {
 import { Header } from './components/common/header/Header';
 import styles from './App.module.css'
 import { Spinner } from './components/common/spinner/Spinner';
+import { Species } from './models/Species';
 
 const queryClient = new QueryClient();
 
@@ -47,14 +48,19 @@ export const App = () => (
               <AdoptionEventPage />
             </Suspense>
           </Route>
+          <Route path="/animals/dogs">
+            <Suspense fallback={<Spinner />}>
+              <AnimalsPage species={Species.Dog} />
+            </Suspense>
+          </Route>
+          <Route path="/animals/cats">
+            <Suspense fallback={<Spinner />}>
+              <AnimalsPage species={Species.Cat} />
+            </Suspense>
+          </Route>
           <Route path="/animals/:animalID">
             <Suspense fallback={<Spinner />}>
               <AnimalPage />
-            </Suspense>
-          </Route>
-          <Route path="/animals">
-            <Suspense fallback={<Spinner />}>
-              <AnimalsPage />
             </Suspense>
           </Route>
           <Route path="/">
