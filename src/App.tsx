@@ -71,14 +71,14 @@ export const App = () => (
               <AdoptionEventPage tab={AdoptionEventPageTab.Crates} />
             </Suspense>
           </Route>
-          <Route path="/animals/dogs">
-            <Suspense fallback={<Spinner />}>
-              <AnimalsPage species={Species.Dog} />
-            </Suspense>
-          </Route>
           <Route path="/animals/cats">
             <Suspense fallback={<Spinner />}>
               <AnimalsPage species={Species.Cat} />
+            </Suspense>
+          </Route>
+          <Route path="/animals">
+            <Suspense fallback={<Spinner />}>
+              <AnimalsPage species={Species.Dog} />
             </Suspense>
           </Route>
           <Route path="/animals/:animalID">

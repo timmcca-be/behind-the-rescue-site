@@ -14,7 +14,7 @@ export const Header = () => (
         <FaCalendar title="Adoption Events" className={styles.linkIcon} />
         <span className={styles.expanded}>Adoption Events</span>
       </Link>
-      <Link to="/animals/dogs">
+      <Link to="/animals">
         <FaDog title="Animals" className={styles.linkIcon} />
         <span className={styles.expanded}>Animals</span>
       </Link>
