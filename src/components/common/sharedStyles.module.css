@@ -30,3 +30,7 @@
 .icon {
   margin-right: 0.3rem;
 }
+
+.clickable {
+  cursor: pointer;
+}

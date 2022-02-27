@@ -23,7 +23,7 @@ export const AnimalToggle = ({
     className={[
       sharedStyles.animalListItem,
       sharedStyles.animalDataContainer,
-      styles.clickable,
+      sharedStyles.clickable,
       checked ? styles.selected : '',
     ].join(' ')}
   >

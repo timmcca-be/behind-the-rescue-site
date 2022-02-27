@@ -8,9 +8,14 @@ export type GetCrateReservationsResponse = {
   crateStacks: CrateStackDto[];
 };
 
+export const makeCrateReservationsKey = (
+  adoptionEventID: number,
+  date?: string,
+) => ['adoption-event', adoptionEventID, 'date', date, 'crate-reservations'];
+
 export const useCrateReservations = (adoptionEventID: number, date?: string) =>
   useQuery(
-    ['adoption-event', adoptionEventID, 'date', date, 'crate-reservations'],
+    makeCrateReservationsKey(adoptionEventID, date),
     () =>
       apiRequest<GetCrateReservationsResponse>(
         `/adoption-events/${adoptionEventID}/dates/${date}/crate-reservations`,
