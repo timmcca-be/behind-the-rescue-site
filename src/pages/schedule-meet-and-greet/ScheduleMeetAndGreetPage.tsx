@@ -63,7 +63,7 @@ export const ScheduleMeetAndGreetPage = () => {
       potentialAdopterName,
       fullyVaccinated,
     });
-    history.push(`/adoption-events/${adoptionEventID}`);
+    history.push(`/adoption-events/${adoptionEventID}/meet-and-greets`);
   }
 
   return (
