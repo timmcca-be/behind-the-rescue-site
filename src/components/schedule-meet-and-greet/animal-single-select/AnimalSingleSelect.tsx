@@ -5,7 +5,6 @@ import { AnimalDto } from '../../../models/AnimalDto';
 import { Species } from '../../../models/Species';
 import styles from './AnimalSingleSelect.module.css';
 import sharedStyles from '../../common/sharedStyles.module.css';
-import { useAvailableAnimals } from '../../../hooks/api/useAvailableAnimals';
 import { SearchableAnimalList } from '../../common/animal/searchable-animal-list/SearchableAnimalList';
 import { AnimalToggle } from '../../common/animal/animal-toggle/AnimalToggle';
 import { AnimalPhoto } from '../../common/animal/animal-photo/AnimalPhoto';
@@ -13,23 +12,20 @@ import { AnimalInfo } from '../../common/animal/animal-info/AnimalInfo';
 
 export type AnimalSingleSelectProps = {
   species: Species;
-  date: string;
+  selectableAnimals?: AnimalDto[];
   selectedAnimal: AnimalDto | undefined;
   setSelectedAnimal: Dispatch<SetStateAction<AnimalDto | undefined>>;
 }
 
 export const AnimalSingleSelect = ({
   species,
-  date,
+  selectableAnimals,
   selectedAnimal,
   setSelectedAnimal,
 }: AnimalSingleSelectProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const closeModal = () => setModalOpen(false);
 
-  const availableAnimals = useAvailableAnimals(species, date, {
-    enabled: isModalOpen,
-  }).data?.animals;
   const [filter, setFilter] = useState('');
 
   useEffect(() => setFilter(''), [isModalOpen]);
@@ -57,7 +53,7 @@ export const AnimalSingleSelect = ({
         overlayClassName={styles.overlay}
       >
         <SearchableAnimalList
-          animals={availableAnimals}
+          animals={selectableAnimals}
           filter={filter}
           setFilter={setFilter}
         >

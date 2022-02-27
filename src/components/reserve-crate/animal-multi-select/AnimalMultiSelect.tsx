@@ -6,29 +6,25 @@ import { Species } from '../../../models/Species';
 import { RemovableAnimal } from '../removable-animal/RemovableAnimal';
 import styles from './AnimalMultiSelect.module.css';
 import sharedStyles from '../../common/sharedStyles.module.css';
-import { useAvailableAnimals } from '../../../hooks/api/useAvailableAnimals';
 import { SearchableAnimalList } from '../../common/animal/searchable-animal-list/SearchableAnimalList';
 import { AnimalToggle } from '../../common/animal/animal-toggle/AnimalToggle';
 
 export type AnimalMultiSelectProps = {
   species: Species;
-  date: string;
+  selectableAnimals?: AnimalDto[];
   selectedAnimals: AnimalDto[];
   setSelectedAnimals: Dispatch<SetStateAction<AnimalDto[]>>;
 }
 
 export const AnimalMultiSelect = ({
   species,
-  date,
+  selectableAnimals,
   selectedAnimals,
   setSelectedAnimals,
 }: AnimalMultiSelectProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const closeModal = () => setModalOpen(false);
 
-  const availableAnimals = useAvailableAnimals(species, date, {
-    enabled: isModalOpen,
-  }).data?.animals;
   const [filter, setFilter] = useState('');
 
   useEffect(() => setFilter(''), [isModalOpen]);
@@ -59,7 +55,7 @@ export const AnimalMultiSelect = ({
         className={styles.addAnimals}
       >
         <FaPlus className={sharedStyles.icon} />
-        Add animals
+        Add {species.toLowerCase()}s
       </button>
       <Modal
         isOpen={isModalOpen}
@@ -68,7 +64,7 @@ export const AnimalMultiSelect = ({
         overlayClassName={styles.overlay}
       >
         <SearchableAnimalList
-          animals={availableAnimals}
+          animals={selectableAnimals}
           filter={filter}
           setFilter={setFilter}
         >

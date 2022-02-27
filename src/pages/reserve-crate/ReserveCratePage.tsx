@@ -9,6 +9,8 @@ import { CrateSizeSelect } from '../../components/reserve-crate/crate-size-selec
 import { AnimalMultiSelect } from '../../components/reserve-crate/animal-multi-select/AnimalMultiSelect';
 import { useValidation } from '../../hooks/validation/useValidation';
 import styles from '../../components/common/formStyles.module.css';
+import { useAvailableAnimals } from '../../hooks/api/useAvailableAnimals';
+import { Species } from '../../models/Species';
 
 export type ReserveCratePageParams = {
   adoptionEventID: string;
@@ -27,6 +29,14 @@ export const ReserveCratePage = () => {
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
   const reserveCrateMutation = useReserveCrate(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+
+  const availableAnimals = useAvailableAnimals(
+    adoptionEvent?.availableSpecies ?? Species.Dog,
+    adoptionEvent?.nextOccurrenceDate ?? "",
+    {
+      enabled: adoptionEvent !== undefined,
+    },
+  ).data?.animals;
 
   const [crateSize, setCrateSize] = useState<CrateSize | null>(null);
   const [animals, setAnimals] = useState<AnimalDto[]>([]);
@@ -73,7 +83,7 @@ export const ReserveCratePage = () => {
         {adoptionEvent && (
           <AnimalMultiSelect
             species={adoptionEvent.availableSpecies}
-            date={adoptionEvent.nextOccurrenceDate}
+            selectableAnimals={availableAnimals}
             selectedAnimals={animals}
             setSelectedAnimals={setAnimals}
           />

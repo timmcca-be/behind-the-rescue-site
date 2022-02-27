@@ -8,6 +8,8 @@ import { useValidation } from '../../hooks/validation/useValidation';
 import { useScheduleMeetAndGreet } from '../../hooks/api/useScheduleMeetAndGreet';
 import styles from '../../components/common/formStyles.module.css';
 import { AnimalSingleSelect } from '../../components/schedule-meet-and-greet/animal-single-select/AnimalSingleSelect';
+import { useAnimals } from '../../hooks/api/useAnimals';
+import { Species } from '../../models/Species';
 
 export type ScheduleMeetAndGreetPageParams = {
   adoptionEventID: string;
@@ -27,6 +29,13 @@ export const ScheduleMeetAndGreetPage = () => {
 
   const adoptionEvent = useAdoptionEvent(adoptionEventID).data?.adoptionEvent;
   const scheduleMeetAndGreetMutation = useScheduleMeetAndGreet(adoptionEventID, adoptionEvent?.nextOccurrenceDate);
+
+  const animals = useAnimals(
+    adoptionEvent?.availableSpecies ?? Species.Dog,
+    {
+      enabled: adoptionEvent !== undefined,
+    },
+  ).data?.animals;
 
   const [animal, setAnimal] = useState<AnimalDto | undefined>(undefined);
   const [time, setTime] = useState<string>("");
@@ -72,7 +81,7 @@ export const ScheduleMeetAndGreetPage = () => {
         {adoptionEvent && (
           <AnimalSingleSelect
             species={adoptionEvent.availableSpecies}
-            date={adoptionEvent.nextOccurrenceDate}
+            selectableAnimals={animals}
             selectedAnimal={animal}
             setSelectedAnimal={setAnimal}
           />
