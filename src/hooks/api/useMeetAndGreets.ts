@@ -6,9 +6,14 @@ export type GetMeetAndGreetsResponse = {
   meetAndGreets: MeetAndGreetDto[];
 };
 
+export const makeMeetAndGreetsKey = (
+  adoptionEventID: number,
+  date?: string,
+) => ['adoption-event', adoptionEventID, 'date', date, 'meet-and-greets'];
+
 export const useMeetAndGreets = (adoptionEventID: number, date?: string) =>
   useQuery(
-    ['adoption-event', adoptionEventID, 'date', date, 'meet-and-greets'],
+    makeMeetAndGreetsKey(adoptionEventID, date),
     () =>
       apiRequest<GetMeetAndGreetsResponse>(
         `/adoption-events/${adoptionEventID}/dates/${date}/meet-and-greets`,

@@ -1,0 +1,7 @@
+.warning {
+  background-color: var(--warning);
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 3px;
+}

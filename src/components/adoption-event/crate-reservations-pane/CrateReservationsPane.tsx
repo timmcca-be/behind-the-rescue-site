@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCrateReservations } from '../../../hooks/api/useCrateReservations';
 import { Spinner } from '../../common/spinner/Spinner';
-import { CrateReservation } from '../crate-reservation/CrateReservation';
+import { CrateReservation } from './crate-reservation/CrateReservation';
 
 export type CrateReservationsPaneProps = {
   adoptionEventID: number;

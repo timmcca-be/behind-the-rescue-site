@@ -76,7 +76,7 @@ export const App = () => (
               <AnimalsPage species={Species.Cat} />
             </Suspense>
           </Route>
-          <Route path="/animals">
+          <Route path="/animals/dogs">
             <Suspense fallback={<Spinner />}>
               <AnimalsPage species={Species.Dog} />
             </Suspense>
@@ -84,6 +84,11 @@ export const App = () => (
           <Route path="/animals/:animalID">
             <Suspense fallback={<Spinner />}>
               <AnimalPage />
+            </Suspense>
+          </Route>
+          <Route path="/animals" exact={true}>
+            <Suspense fallback={<Spinner />}>
+              <AnimalsPage species={Species.Dog} />
             </Suspense>
           </Route>
           <Route path="/">

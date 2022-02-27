@@ -2,17 +2,19 @@ import React from 'react';
 import { useMeetAndGreets } from '../../../hooks/api/useMeetAndGreets';
 import styles from './MeetAndGreetsPane.module.css';
 import sharedStyles from '../../common/sharedStyles.module.css';
-import { AnimalLink } from '../../common/animal/animal-link/AnimalLink';
 import { Spinner } from '../../common/spinner/Spinner';
+import { MeetAndGreet } from './meet-and-greet/MeetAndGreet';
 
 export type MeetAndGreetsPaneProps = {
   adoptionEventID: number;
   date: string;
+  timeZone: string;
 };
 
 export const MeetAndGreetsPane = ({
   adoptionEventID,
   date,
+  timeZone,
 }: MeetAndGreetsPaneProps) => {
   const { data, isLoading } = useMeetAndGreets(adoptionEventID, date);
 
@@ -21,7 +23,11 @@ export const MeetAndGreetsPane = ({
       {data != null && data.meetAndGreets.length > 0 && (
         <ul className={[sharedStyles.list, styles.meetAndGreets].join(' ')}>
           {data?.meetAndGreets.map((meetAndGreet) => (
-            <AnimalLink key={meetAndGreet.id} animal={meetAndGreet.animal} />
+            <MeetAndGreet
+              key={meetAndGreet.id}
+              meetAndGreet={meetAndGreet}
+              timeZone={timeZone}
+            />
           ))}
         </ul>
       )}

@@ -91,6 +91,7 @@ export const AdoptionEventPage = ({ tab }: AdoptionEventPageProps) => {
         <MeetAndGreetsPane
           adoptionEventID={adoptionEventID}
           date={adoptionEvent.nextOccurrenceDate}
+          timeZone={adoptionEvent.timeZone}
         />
       )}
     </>

@@ -4,6 +4,7 @@ import { SearchableAnimalList } from '../../components/common/animal/searchable-
 import { TabList } from '../../components/common/tab-list/TabList';
 import { useAnimals } from '../../hooks/api/useAnimals';
 import { Species } from '../../models/Species';
+import sharedStyles from '../../components/common/sharedStyles.module.css';
 
 export type AnimalsPageProps = {
   species: Species;
@@ -36,7 +37,11 @@ export const AnimalsPage = ({ species }: AnimalsPageProps) => {
         filter={filter}
         setFilter={setFilter}
       >
-        {(animal) => <AnimalLink animal={animal} />}
+        {(animal) => (
+          <li className={sharedStyles.animalListItem}>
+            <AnimalLink animal={animal} />
+          </li>
+        )}
       </SearchableAnimalList>
     </>
   );

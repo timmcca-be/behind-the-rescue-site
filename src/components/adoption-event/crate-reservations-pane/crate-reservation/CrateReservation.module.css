@@ -23,27 +23,3 @@
   align-items: center;
   font-size: 1.3rem;
 }
-
-.cancelButton {
-  border: 1px solid var(--primary);
-  border-radius: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1;
-  color: var(--primary);
-  background-color: transparent;
-}
-
-.cancelButton:active {
-  border-color: var(--primary-dark);
-  color: var(--primary-dark);
-}
-
-.warning {
-  background-color: var(--warning);
-  color: white;
-  font-weight: bold;
-  padding: 0.5rem;
-  border-radius: 3px;
-}
