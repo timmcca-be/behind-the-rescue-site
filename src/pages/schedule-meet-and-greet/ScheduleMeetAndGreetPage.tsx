@@ -34,16 +34,16 @@ export const ScheduleMeetAndGreetPage = () => {
   );
 
   const animals = useAnimals(adoptionEvent?.availableSpecies ?? Species.Dog, {
-    enabled: adoptionEvent !== undefined,
+    enabled: adoptionEvent != null,
   }).data?.animals;
 
-  const [animal, setAnimal] = useState<AnimalDto | undefined>(undefined);
+  const [animal, setAnimal] = useState<AnimalDto | null>(null);
   const [time, setTime] = useState<string>('');
   const [potentialAdopterName, setPotentialAdopterName] = useState<string>('');
   const [fullyVaccinated, setFullyVaccinated] = useState(true);
 
   const { displayedErrors, validate } = useValidation({
-    [ValidationError.NoAnimalSelected]: animal === undefined,
+    [ValidationError.NoAnimalSelected]: animal == null,
     [ValidationError.TimeNotSet]: time === '',
     [ValidationError.NoPotentialAdopterName]: potentialAdopterName === '',
   });

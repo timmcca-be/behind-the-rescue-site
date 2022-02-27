@@ -28,7 +28,7 @@ export const AnimalPage = () => {
 
   const animal = useAnimalDetails(animalID).data?.animal;
 
-  if (animal === undefined) {
+  if (animal == null) {
     return null;
   }
 

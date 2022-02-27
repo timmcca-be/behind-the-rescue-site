@@ -13,8 +13,8 @@ import { AnimalInfo } from '../../common/animal/animal-info/AnimalInfo';
 export type AnimalSingleSelectProps = {
   species: Species;
   selectableAnimals?: AnimalDto[];
-  selectedAnimal: AnimalDto | undefined;
-  setSelectedAnimal: Dispatch<SetStateAction<AnimalDto | undefined>>;
+  selectedAnimal: AnimalDto | null;
+  setSelectedAnimal: Dispatch<SetStateAction<AnimalDto | null>>;
 };
 
 export const AnimalSingleSelect = ({
@@ -32,7 +32,7 @@ export const AnimalSingleSelect = ({
 
   return (
     <>
-      {selectedAnimal !== undefined && (
+      {selectedAnimal != null && (
         <article className={sharedStyles.animalDataContainer}>
           <AnimalPhoto animal={selectedAnimal} />
           <AnimalInfo animal={selectedAnimal} />

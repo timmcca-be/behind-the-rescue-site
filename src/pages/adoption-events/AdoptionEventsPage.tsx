@@ -11,13 +11,14 @@ export const AdoptionEventsPage = () => {
   data?.adoptionEvents.forEach((adoptionEvent) =>
     locations.add(adoptionEvent.location),
   );
-  let adoptionEvents: AdoptionEventDto[] | undefined;
+  let adoptionEvents: AdoptionEventDto[] | null;
   if (filter) {
-    adoptionEvents = data?.adoptionEvents.filter(
-      (adoptionEvent) => adoptionEvent.location === filter,
-    );
+    adoptionEvents =
+      data?.adoptionEvents.filter(
+        (adoptionEvent) => adoptionEvent.location === filter,
+      ) ?? null;
   } else {
-    adoptionEvents = data?.adoptionEvents;
+    adoptionEvents = data?.adoptionEvents ?? null;
   }
 
   return (

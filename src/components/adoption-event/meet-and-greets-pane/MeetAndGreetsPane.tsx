@@ -18,7 +18,7 @@ export const MeetAndGreetsPane = ({
 
   return (
     <>
-      {data !== undefined && data.meetAndGreets.length > 0 && (
+      {data != null && data.meetAndGreets.length > 0 && (
         <ul className={[sharedStyles.list, styles.meetAndGreets].join(' ')}>
           {data?.meetAndGreets.map((meetAndGreet) => (
             <AnimalLink key={meetAndGreet.id} animal={meetAndGreet.animal} />

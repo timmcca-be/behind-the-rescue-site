@@ -81,19 +81,18 @@ export const AdoptionEventPage = ({ tab }: AdoptionEventPageProps) => {
         ]}
         activeTabID={tab}
       />
-      {adoptionEvent !== undefined && tab === AdoptionEventPageTab.Crates && (
+      {adoptionEvent != null && tab === AdoptionEventPageTab.Crates && (
         <CrateReservationsPane
           adoptionEventID={adoptionEventID}
           date={adoptionEvent.nextOccurrenceDate}
         />
       )}
-      {adoptionEvent !== undefined &&
-        tab === AdoptionEventPageTab.MeetAndGreets && (
-          <MeetAndGreetsPane
-            adoptionEventID={adoptionEventID}
-            date={adoptionEvent.nextOccurrenceDate}
-          />
-        )}
+      {adoptionEvent != null && tab === AdoptionEventPageTab.MeetAndGreets && (
+        <MeetAndGreetsPane
+          adoptionEventID={adoptionEventID}
+          date={adoptionEvent.nextOccurrenceDate}
+        />
+      )}
     </>
   );
 };

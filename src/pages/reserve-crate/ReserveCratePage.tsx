@@ -37,7 +37,7 @@ export const ReserveCratePage = () => {
     adoptionEvent?.availableSpecies ?? Species.Dog,
     adoptionEvent?.nextOccurrenceDate ?? '',
     {
-      enabled: adoptionEvent !== undefined,
+      enabled: adoptionEvent != null,
     },
   ).data?.animals;
 
@@ -46,7 +46,7 @@ export const ReserveCratePage = () => {
   const [fullyVaccinated, setFullyVaccinated] = useState(true);
 
   const { displayedErrors, validate } = useValidation({
-    [ValidationError.CrateSizeNotSet]: crateSize === null,
+    [ValidationError.CrateSizeNotSet]: crateSize == null,
     [ValidationError.NoAnimalsSelected]: animals.length === 0,
   });
 
