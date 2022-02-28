@@ -72,6 +72,7 @@ export const AnimalPage = () => {
           <a
             className={styles.facebookLink}
             target="_blank"
+            rel="noreferrer"
             href={`https://www.facebook.com/groups/262504977256582/search?q=${encodeURIComponent(
               animal.name,
             )}`}
