@@ -22,6 +22,9 @@ const decodeHtmlEntities = (input: string) =>
       return doc.documentElement.textContent;
     });
 
+const FACEBOOK_GROUP_ID = '262504977256582';
+const IS_MOBILE_DEVICE = /Mobi|Android/i.test(window.navigator.userAgent);
+
 export const AnimalPage = () => {
   const params = useParams<AnimalPageParams>();
   const animalID = Number.parseInt(params.animalID);
@@ -36,6 +39,11 @@ export const AnimalPage = () => {
   const monthsOld = animal.monthsOld % 12;
 
   const iconDataClass = [sharedStyles.iconData, styles.iconData].join(' ');
+
+  const encodedAnimalName = encodeURIComponent(animal.name);
+  const searchFacebookLink = IS_MOBILE_DEVICE
+    ? `https://www.facebook.com/groups/search/?groupID=${FACEBOOK_GROUP_ID}&query=${encodedAnimalName}`
+    : `https://www.facebook.com/groups/${FACEBOOK_GROUP_ID}/search?q=${encodedAnimalName}`;
 
   return (
     <>
@@ -73,9 +81,7 @@ export const AnimalPage = () => {
             className={styles.facebookLink}
             target="_blank"
             rel="noreferrer"
-            href={`https://www.facebook.com/groups/262504977256582/search?q=${encodeURIComponent(
-              animal.name,
-            )}`}
+            href={searchFacebookLink}
           >
             Search on Facebook
           </a>
